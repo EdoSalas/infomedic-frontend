@@ -13,29 +13,72 @@ export class PgSingleton {
             });
             this.db = pgb({
                 connectionString: config.PG_URI,
-                ssl: {rejectUnauthorized: false}
+                ssl: { rejectUnauthorized: false }
             });
         }
         return PgSingleton.instance;
-    }
+    };
 
-    static async findOne(query){
+    static async save(insert, find) {
         await this.getInstance();
         try {
-            const result = await this.db.oneOrNone(query);
+            await this.db.none(insert);
+            const result = await this.findOne(find);
+            if (!result)
+                throw new Error(`Can't insert value: ${insert}`);
             return result;
         } catch (error) {
-            console.log(`Error al realizar la consulta!\n${error}`);
+            throw error;
         }
-    }
+    };
 
-    static async find(query){
+    static async find(query) {
         await this.getInstance();
         try {
             const result = await this.db.manyOrNone(query);
+            if (!result)
+                throw new Error(`Can't get values: ${query}`);
             return result;
         } catch (error) {
-            console.log(`Error al realizar la consulta!\n${error}`);
+            throw error;
         }
-    }
+    };
+
+    static async findOne(query) {
+        await this.getInstance();
+        try {
+            const result = await this.db.oneOrNone(query);
+            if (!result)
+                throw new Error(`Can't get value: ${query}`);
+            return result;
+        } catch (error) {
+            throw error;
+        }
+    };
+
+    static async update(update, find) {
+        await this.getInstance();
+        try {
+            await this.db.none(update);
+            const result = await this.findOne(find);
+            if (!result)
+                throw new Error(`Can't update value: ${update}`);
+            return result;
+        } catch (error) {
+            throw error;
+        }
+    };
+
+    static async delete(del, find) {
+        await this.getInstance();
+        try {
+            await this.db.none(del);
+            const result = await this.findOne(find);
+            if (!result)
+                throw new Error(`Can't delete value: ${del}`);
+            return result;
+        } catch (error) {
+            throw error;
+        }
+    };
 }
