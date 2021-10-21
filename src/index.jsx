@@ -11,7 +11,7 @@ import "./icons";
 
 ReactDOM.render(
   <React.StrictMode>
-  <ToastContainer />
+    <ToastContainer />
     <Router>
       <Pages />
     </Router>
