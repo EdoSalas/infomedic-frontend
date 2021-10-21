@@ -29,13 +29,10 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "concurrently \"nodemon backend/src/app.js --exec babel-node\" \"react-scripts start\"",
-    "build": "concurrently \"babel backend/src --out-dir backend/build\" \"react-scripts build\"",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "devBuild": "babel backend/src --out-dir backend/build",
-    "dev": "nodemon backend/src/app.js --exec babel-node",
-    "front": "react-scripts start"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
