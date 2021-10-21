@@ -33,7 +33,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "devBuild": "babel backend/src --out-dir backend/build",
-    "back": "nodemon backend/src/app.js --exec babel-node",
+    "dev": "nodemon backend/src/app.js --exec babel-node",
     "front": "react-scripts start"
   },
   "eslintConfig": {
