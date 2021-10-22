@@ -1,13 +1,13 @@
 import axios from "axios";
-import config from "../config";
+
+const url = "https://esalas.me/api";
 
 export const getAll = async () => {
     try {
-        const response = axios.get(`${config.BACKEND_URI}/regions`);
-        const data = (await response).data;
-        return data;
+        const response = await axios.get(`${url}/regions`);
+        return await response.data;
     } catch (error) {
-        console.log(`Error: ${error}`);
+        console.log("Error: ", error);
         return error;
     }
 };
