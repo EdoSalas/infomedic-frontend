@@ -53,7 +53,7 @@ const UserLoggin = ({ setLoginSection }) => {
                 </Field>
                 <Field>
                     <Control>
-                        <Input type="pass" name="password" placeholder="Contraseña" value={stateUserLog.password}
+                        <Input type="password" name="password" placeholder="Contraseña" value={stateUserLog.password}
                             onChange={(e) => handleChange(e.target.name, e.target.value)} />
                     </Control>
                 </Field>
