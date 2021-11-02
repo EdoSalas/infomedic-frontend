@@ -5,10 +5,33 @@
 @import "~rbx/rbx";
 
 $menu-width: 295px;
-
+.landing-page {
+  width: 100vw;
+ 
+  align-items: center;
+  background-image: url(./logo1.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+.logo{
+  width:120px;
+  height:100%;
+  margin: 1rem;
+}
 .principal-container {
   display: flex;
   justify-content: center;
+  background-color: $grey-font;
+  height: 100vh;
+}
+.block-container {
+  display: inline-block;
+  justify-content: center;
+  width: 80%;
+  margin: 1rem;
+  
 }
 .content-right {
   justify-content: flex-end;
@@ -237,16 +260,17 @@ button::after {
 }
 .button.is-secondary {
   background-color: transparent;
-  border: 2px solid $primary-palette;
-  color: $primary-palette;
+  border: 2px solid $primary;
+  color: $primary;
   margin-right: 1rem;
   cursor: pointer;
 }
 .button.is-primary {
-  background-color: #01234c;
+  background-color:$primary;
   border-color: transparent;
   color: #fff;
   cursor: pointer;
+  margin-right: 1rem;
 }
 button.is-secondary::after {
   background-color: #fff;

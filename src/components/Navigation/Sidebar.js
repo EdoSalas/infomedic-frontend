@@ -9,7 +9,7 @@ import { db } from '../../firebase/firebase-config';
 import ClickCapture from "../ClickCapture";
 import "./Sidebar.scss";
 import { NestedMenu } from "./components";
-// import { useAuth } from "../../context/AuthContext";
+import { useAuth } from "../../context/AuthContext";
 import { getRoutes } from "./routes";
 
 const StyledMenu = styled.nav`
@@ -116,10 +116,10 @@ function Sidebar({ open, setOpen }) {
   const [menuActive, setMenuActive] = useState(false);
   const [activeMenus, setActiveMenus] = useState({});
   const [activeRoute, setActiveRoutes] = useState({});
- // const { state: authState, handleLogout } = useAuth();
+  const { authState, setAuthState } = useAuth();
   const permissions = ["Main"];
   const routes = getRoutes("Main");
-  const users = collection(db, "usuarios");
+  /* const users = collection(db, "usuarios");
   const [Username, setUserName] = useState("")
 
   const getUserName = async () =>{ 
@@ -129,7 +129,7 @@ function Sidebar({ open, setOpen }) {
     setUserName(data[0].Nombre);
    // return name;
    console.log(Username)
- }
+ } */
 
 
   const availableRoutes = routes.filter((route) =>
@@ -173,7 +173,16 @@ function Sidebar({ open, setOpen }) {
     return () => window.removeEventListener("keydown", handleKeyDown);
   });
 
-  getUserName()
+  const handleLogout=()=>{
+    setAuthState({
+      isLoggedIn: false,
+      isLoginPending: false,
+      loginError: null,
+      user: { userid: null },
+    });
+  }
+
+ // getUserName()
  
   return (
     <nav className="navigation-bar">
@@ -218,7 +227,7 @@ function Sidebar({ open, setOpen }) {
           <div className="sidebar-header">
             <div className="sidebar-header-item__brand">
               <Link to="/">
-                <p>Hola {Username}</p>
+                <p>Hola {authState.user.name}</p>
               </Link>
             </div>
           </div>
@@ -253,7 +262,7 @@ function Sidebar({ open, setOpen }) {
             
             >
               
-              <span>Cerrar sesión</span>
+              <span onClick={()=>handleLogout()}>Cerrar sesión</span>
             </div>
           </div>
         </StyledMenu>

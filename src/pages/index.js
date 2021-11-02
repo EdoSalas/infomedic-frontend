@@ -6,10 +6,14 @@ import Diseases from "./diseases";
 import Sintomas from "./Sintomas";
 import { ModalProvider } from "../context/ModalContext";
 import Navigation from "../components/Navigation";
+import { useAuth } from "../context";
+import LandingPage from "./LandingPage/LandingPage";
 
 const Pages = (props) => {
+  const { authState } = useAuth();
   const [open, setOpen] = useLocalStorage(`MENU_OPEN`, false);
-  return (
+ 
+  return authState.isLoggedIn ? (
     <div className="app-container">
       <ModalProvider>
         <main
@@ -42,6 +46,8 @@ const Pages = (props) => {
         </main>
       </ModalProvider>
     </div>
+  ): (
+    <LandingPage />
   );
 };
 Pages.propTypes = {};

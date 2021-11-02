@@ -7,14 +7,17 @@ import reportWebVitals from "./reportWebVitals";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./icons";
+import { AuthProvider } from "./context/AuthContext";
 
 
 ReactDOM.render(
   <React.StrictMode>
     <ToastContainer />
+    <AuthProvider>
     <Router>
       <Pages />
     </Router>
+    </AuthProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

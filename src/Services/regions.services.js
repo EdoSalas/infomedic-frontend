@@ -1,9 +1,9 @@
 import axios from "axios";
-import config from "../config";
+
 
 export const getAll = async () => {
     try {
-        const response = axios.get(`${config.BACKEND_URI}/regions`);
+        const response = axios.get('https://esalas.me/api/regions');
         const data = (await response).data;
         return data;
     } catch (error) {
