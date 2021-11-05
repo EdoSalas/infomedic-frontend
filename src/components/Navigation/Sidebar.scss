@@ -75,7 +75,7 @@ $menu-width: 295px;
         visibility: hidden;
         transform: translate3d(-100%, 0, 0);
         transition: 350ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        background: #373a47;
+        // background: #373a47;
         color: white;
         box-shadow: 1px 0px 4px 0px hsla(0, 0%, 0%, 0.15);
         letter-spacing: 1px;
@@ -98,7 +98,7 @@ $menu-width: 295px;
           @media (max-width: 768px) {
             .close-nested-menu {
               display: block;
-            } 
+            }
           }
         }
 
@@ -180,7 +180,7 @@ $menu-width: 295px;
   }
 }
 .sidebar-header {
-  height: 130px;
+  height: 155px;
   .sidebar-header-item {
     width: 100%;
     &__brand {
@@ -233,7 +233,7 @@ $menu-width: 295px;
       background-color: $blue-med-faded;
     }
     &.is-current {
-      background-color: $blue-med;
+      background-color: $primary;
       color: $grey-lightest;
       span {
         color: $grey-lightest;

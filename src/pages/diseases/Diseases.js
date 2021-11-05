@@ -10,7 +10,6 @@ const Diseases = () => {
   return (
     <div className="grid">
       <h1>Enfermedades</h1>
-      <Button type="button" onClick={() => handleClick()}>Regions</Button>
     </div>
   )
 };

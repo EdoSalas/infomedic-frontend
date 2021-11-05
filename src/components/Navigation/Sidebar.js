@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Link, useLocation, useHistory } from "react-router-dom";
-import { collection, doc, setDoc, getDocs } from "firebase/firestore"; 
-import { Icon } from "rbx";
+import { Icon, Image } from "rbx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
 import { db } from '../../firebase/firebase-config';
@@ -11,6 +10,8 @@ import "./Sidebar.scss";
 import { NestedMenu } from "./components";
 import { useAuth } from "../../context/AuthContext";
 import { getRoutes } from "./routes";
+import "../../styles/index.scss";
+import logo from "../../styles/logo.png";
 
 const StyledMenu = styled.nav`
   display: flex;
@@ -50,7 +51,7 @@ const StyledMenu = styled.nav`
     }
 
     &:hover {
-      color: #343078;
+      color: #055a53;
     }
   }
 `;
@@ -142,9 +143,9 @@ function Sidebar({ open, setOpen }) {
     setMenuActive(false);
   }, [location.pathname]);
 
-  
 
- 
+
+
   const toggleActiveMenus = (name) =>
     setActiveMenus((prev) => ({ ...prev, [name]: !activeMenus[name] }));
 
@@ -173,7 +174,7 @@ function Sidebar({ open, setOpen }) {
     return () => window.removeEventListener("keydown", handleKeyDown);
   });
 
-  const handleLogout=()=>{
+  const handleLogout = () => {
     setAuthState({
       isLoggedIn: false,
       isLoginPending: false,
@@ -182,8 +183,8 @@ function Sidebar({ open, setOpen }) {
     });
   }
 
- // getUserName()
- 
+  // getUserName()
+
   return (
     <nav className="navigation-bar">
       <ClickCapture onOutsideClick={() => setMenuActive(false)}>
@@ -226,14 +227,23 @@ function Sidebar({ open, setOpen }) {
         <StyledMenu open={open}>
           <div className="sidebar-header">
             <div className="sidebar-header-item__brand">
+
               <Link to="/">
-                <p>Hola {authState.user.name}</p>
+                <h3>{authState?.user?.genero === "F" ? "Bienvenida" : "Bienvenido"} {authState?.user?.name} </h3>
               </Link>
+              <div className=" title-center">
+                <div className="logo1 ">
+                  <Image.Container size="10px sq.">
+                    <Image src={logo} />
+                  </Image.Container>
+                </div>
+
+              </div>
             </div>
           </div>
           <div className="header-container">
             <div>
-             
+
             </div>
           </div>
           <hr />
@@ -241,9 +251,8 @@ function Sidebar({ open, setOpen }) {
             {availableRoutes.map((r, i) => (
               <div
                 key={r.name}
-                className={`sidebar-menu-item ${
-                  activeRoute === routes[i] && menuActive ? "is-active" : ""
-                } ${r.active?.(location) ? "is-current" : ""}`}
+                className={`sidebar-menu-item ${activeRoute === routes[i] && menuActive ? "is-active" : ""
+                  } ${r.active?.(location) ? "is-current" : ""}`}
                 role="button"
                 tabIndex="0"
                 onClick={() => toggleActiveRoutes(i)}
@@ -259,10 +268,11 @@ function Sidebar({ open, setOpen }) {
               className="sidebar-menu-item bottom"
               role="button"
               tabIndex="-1"
-            
+
             >
-              
-              <span onClick={()=>handleLogout()}>Cerrar sesión</span>
+
+              <span onClick={() => handleLogout()}>Salir</span>
+
             </div>
           </div>
         </StyledMenu>
