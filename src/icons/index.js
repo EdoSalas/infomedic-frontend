@@ -25,6 +25,12 @@ import {
   faCoins,
   faShoppingBasket,
   faInfoCircle,
+  faHandsWash,
+  faVirus,
+  faHeadSideVirus,
+  faExclamationCircle,
+  faUserCog,
+  faChartArea,
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
@@ -52,5 +58,11 @@ library.add(
   faUserPlus,
   faCoins,
   faShoppingBasket,
-  faInfoCircle
+  faInfoCircle,
+  faHandsWash,
+  faVirus,
+  faHeadSideVirus,
+  faExclamationCircle,
+  faUserCog,
+  faChartArea,
 );

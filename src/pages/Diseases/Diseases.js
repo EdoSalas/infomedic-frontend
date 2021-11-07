@@ -29,6 +29,7 @@ const Diseases = () => {
       const user = await saveDisease(newDisease)
       if (user.success) {
         toast.success("¡Nueva enfermedad registrada!")
+        getDiseases(); 
       }
     } 
   }

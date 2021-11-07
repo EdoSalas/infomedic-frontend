@@ -2,7 +2,7 @@ const MAIN_ROUTES = [
   {
     name: "diseases",
     label: "Enfermedades",
-    icon: "file-upload",
+    icon: "virus",
     active: (location) => {
       const [, p] = location.pathname.split("/");
       return /diseases/.test(p);
@@ -12,7 +12,7 @@ const MAIN_ROUTES = [
     {
       name: "symptom",
       label: "Síntomas ",
-      icon: "file-upload",
+      icon: "head-side-virus",
       active: (location) => {
         const [, p] = location.pathname.split("/");
         return /symptom/.test(p);
@@ -22,7 +22,7 @@ const MAIN_ROUTES = [
     {
       name: "risk",
       label: "Factores de riesgo ",
-      icon: "file-upload",
+      icon: "exclamation-circle",
       active: (location) => {
         const [, p] = location.pathname.split("/");
         return /risk/.test(p);
@@ -32,7 +32,7 @@ const MAIN_ROUTES = [
     {
       name: "recomendations",
       label: "Recomendaciones",
-      icon: "file-upload",
+      icon: "hands-wash",
       active: (location) => {
         const [, p] = location.pathname.split("/");
         return /recomendations/.test(p);
@@ -42,7 +42,7 @@ const MAIN_ROUTES = [
     {
       name: "configuration",
       label: "Configuración",
-      icon: "file-upload",
+      icon: "user-cog",
       active: (location) => {
         const [, p] = location.pathname.split("/");
         return /configuration/.test(p);
