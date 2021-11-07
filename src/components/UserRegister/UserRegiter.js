@@ -12,7 +12,7 @@ import SelectGender from "../SelectGender";
 const UserRegiter = ({ setLoginSection }) => {
   const { setAuthState } = useAuth();
   const [province, setProvince] = useState({ provinceId: "1" });
-
+  const [password, setPassword] = useState({ password: "", passwordConfirm: ""})
   const [stateUserReg, setstateUserReg] = useState({
     id: "",
     name: "",
@@ -24,7 +24,12 @@ const UserRegiter = ({ setLoginSection }) => {
     genero: "F",
   });
 
-
+const handlePasswordChange = (name, value) =>{
+  setPassword(prev => ({ ...prev, [name]: value }))
+  if(name === "password"){
+    setstateUserReg(prev => ({ ...prev, [name]: value }))
+  }
+}
   const handleChangeProvince = (name, value) => {
     setProvince(prev => ({ ...prev, [name]: value }))
   }
@@ -35,7 +40,11 @@ const UserRegiter = ({ setLoginSection }) => {
       if(stateUserReg.id.length < 9) {
         toast.error("¡El número de cédula debe tener un mínino de 9 dígitos!")
         return false;
-      } 
+      }
+      if(password.password !== password.passwordConfirm) {
+        toast.error("¡La contraseña y la confirmación no coinciden!")
+        return false;
+      }
       return true;
     }
     toast.error("¡Debe completar todos los datos solicitados!")
@@ -113,6 +122,20 @@ const UserRegiter = ({ setLoginSection }) => {
           <Control>
             <SelectProvince label="Provincia:" name="provinceId" value={province.provinceId} onChange={handleChangeProvince} />
             <SelectCanton label="Cantón:" idProvince={province.provinceId} name="canton" value={stateUserReg.canton} onChange={handleChange} />
+          </Control>
+        </Field>
+        <Field>
+          <Control>
+          <Label>Contraseña:</Label>
+          <Input type="password" name="password" placeholder="Contraseña" value={password.password}
+          onChange={(e) => handlePasswordChange(e.target.name, e.target.value)} />
+          </Control>
+        </Field>
+        <Field>
+          <Control>
+          <Label>Confirme la contraseña:</Label>
+          <Input type="password" name="passwordConfirm" placeholder="Confirme la contraseña" value={password.passwordConfirm}
+          onChange={(e) => handlePasswordChange(e.target.name, e.target.value)} />
           </Control>
         </Field>
         <Button type="submit" color="primary">Registrarse</Button>

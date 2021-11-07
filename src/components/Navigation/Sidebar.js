@@ -4,12 +4,12 @@ import { Link, useLocation, useHistory } from "react-router-dom";
 import { Icon, Image } from "rbx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
-import { db } from '../../firebase/firebase-config';
 import ClickCapture from "../ClickCapture";
 import "./Sidebar.scss";
 import { NestedMenu } from "./components";
 import { useAuth } from "../../context/AuthContext";
 import { getRoutes } from "./routes";
+import { getRoutes as getAdminRoutes } from "./adminRoutes";
 import "../../styles/index.scss";
 import logo from "../../styles/logo.png";
 
@@ -17,7 +17,6 @@ const StyledMenu = styled.nav`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: white;
   height: fit-content;
   text-align: left;
   padding: 0;
@@ -120,6 +119,7 @@ function Sidebar({ open, setOpen }) {
   const { authState, setAuthState } = useAuth();
   const permissions = ["Main"];
   const routes = getRoutes("Main");
+  const routesAdmin = getAdminRoutes("Main");
   /* const users = collection(db, "usuarios");
   const [Username, setUserName] = useState("")
 
@@ -129,11 +129,16 @@ function Sidebar({ open, setOpen }) {
     // await db.collection("usuarios").get();
     setUserName(data[0].Nombre);
    // return name;
-   console.log(Username)
+
  } */
 
 
   const availableRoutes = routes.filter((route) =>
+    Array.isArray(route.permissions)
+      ? route.permissions?.some((perm) => permissions?.some((x) => perm === x))
+      : true
+  );
+  const availableRoutesAdmin = routesAdmin.filter((route) =>
     Array.isArray(route.permissions)
       ? route.permissions?.some((perm) => permissions?.some((x) => perm === x))
       : true
@@ -159,6 +164,19 @@ function Sidebar({ open, setOpen }) {
       }
     } else {
       setActiveRoutes(availableRoutes[id]);
+      setMenuActive(true);
+    }
+  };
+  const toggleActiveRoutesAdmin = (id) => {
+    const route = availableRoutesAdmin[id];
+    if (route.to) {
+      history.push(route.to);
+      setMenuActive(false);
+      if (window.innerWidth < 900) {
+        setOpen(false);
+      }
+    } else {
+      setActiveRoutes(availableRoutesAdmin[id]);
       setMenuActive(true);
     }
   };
@@ -224,12 +242,13 @@ function Sidebar({ open, setOpen }) {
           <div />
           <div />
         </StyledBurger>
-        <StyledMenu open={open}>
+        <StyledMenu open={open} className="menu-container">
           <div className="sidebar-header">
             <div className="sidebar-header-item__brand">
 
               <Link to="/">
-                <h3>{authState?.user?.genero === "F" ? "Bienvenida" : "Bienvenido"} {authState?.user?.name} </h3>
+                <h3>{authState?.user?.genero === "F" ? "Bienvenida" : "Bienvenido"}  </h3>
+                <h3>{authState?.user?.name}</h3>
               </Link>
               <div className=" title-center">
                 <div className="logo1 ">
@@ -237,7 +256,6 @@ function Sidebar({ open, setOpen }) {
                     <Image src={logo} />
                   </Image.Container>
                 </div>
-
               </div>
             </div>
           </div>
@@ -248,7 +266,7 @@ function Sidebar({ open, setOpen }) {
           </div>
           <hr />
           <div className="sidebar-menu">
-            {availableRoutes.map((r, i) => (
+            {authState.user.type=== 0 && availableRoutes.map((r, i) => (
               <div
                 key={r.name}
                 className={`sidebar-menu-item ${activeRoute === routes[i] && menuActive ? "is-active" : ""
@@ -257,6 +275,22 @@ function Sidebar({ open, setOpen }) {
                 tabIndex="0"
                 onClick={() => toggleActiveRoutes(i)}
                 onKeyDown={() => toggleActiveRoutes(i)}
+              >
+                <Icon size="large">
+                  <FontAwesomeIcon icon={r.icon} />
+                </Icon>
+                <span>{r.label}</span>
+              </div>
+            ))}
+            {authState.user.type=== 1 && availableRoutesAdmin.map((r, i) => (
+              <div
+                key={r.name}
+                className={`sidebar-menu-item ${activeRoute === routes[i] && menuActive ? "is-active" : ""
+                  } ${r.active?.(location) ? "is-current" : ""}`}
+                role="button"
+                tabIndex="0"
+                onClick={() => toggleActiveRoutesAdmin(i)}
+                onKeyDown={() => toggleActiveRoutesAdmin(i)}
               >
                 <Icon size="large">
                   <FontAwesomeIcon icon={r.icon} />

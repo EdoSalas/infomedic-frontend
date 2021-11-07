@@ -2,8 +2,11 @@ import React from "react";
 import { Container } from "rbx";
 import { Switch, Route } from "react-router-dom";
 import { useLocalStorage } from "../hooks";
-import Diseases from "./diseases";
-import Sintomas from "./Sintomas";
+import Diseases from "./Diseases";
+import Symptom from "./Symptom";
+import Stadistics from "./Stadistics";
+import Recomendations from "./Recomendations";
+import Configuration from "./Configuration";
 import { ModalProvider } from "../context/ModalContext";
 import Navigation from "../components/Navigation";
 import { useAuth } from "../context";
@@ -12,7 +15,7 @@ import LandingPage from "./LandingPage/LandingPage";
 const Pages = (props) => {
   const { authState } = useAuth();
   const [open, setOpen] = useLocalStorage(`MENU_OPEN`, false);
- 
+
   return authState.isLoggedIn ? (
     <div className="app-container">
       <ModalProvider>
@@ -32,21 +35,52 @@ const Pages = (props) => {
               .filter(Boolean)
               .join(" ")}
           >
-            <Container fluid>
+            {authState.user.type === 0 && (<Container fluid>
               <Switch>
-                <Route path="/sintomas">
-                  <Sintomas />
+                <Route path="/symptom">
+                  <Symptom />
+                </Route>
+                <Route path="/stadistics">
+                  <Stadistics />
+                </Route>
+                <Route path="/recomendations">
+                  <Recomendations />
+                </Route>
+                <Route path="/configuration">
+                  <Configuration />
                 </Route>
                 <Route path="/">
                   <Diseases />
                 </Route>
               </Switch>
-            </Container>
+            </Container>)}
+            {authState.user.type === 1 && (
+              <Container fluid>
+                <Switch>
+                  <Route path="/diseases">
+                    <Diseases />
+                  </Route>
+                  <Route path="/symptom">
+                    <Symptom />
+                  </Route>
+                  <Route path="/recomendations">
+                  <Recomendations />
+                </Route>
+                <Route path="/configuration">
+                  <Configuration />
+                </Route>
+                  <Route path="/">
+                    <Diseases />
+                  </Route>
+                </Switch>
+              </Container>
+            )}
+
           </div>
         </main>
       </ModalProvider>
     </div>
-  ): (
+  ) : (
     <LandingPage />
   );
 };

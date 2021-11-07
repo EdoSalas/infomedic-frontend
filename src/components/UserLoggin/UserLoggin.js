@@ -21,15 +21,13 @@ const UserLoggin = ({ setLoginSection }) => {
 
     const handleLoggin = async (e) => {
         e.preventDefault();
-         const user = await loginUser(stateUserLog)
-         console.log(user.success)
+         const user = await loginUser(stateUserLog);
          if(user.success){
            setAuthState((prev) => ({...prev, user: user.data, isLoggedIn: true}));
          }else{
              toast.error("Credenciales erróneas")
          } 
     }
-    console.log(stateUserLog)
     const handleChange = (name, value) => {
         setstateUserLog(prev => ({ ...prev, [name]: value }));
     }

@@ -1,10 +1,10 @@
 import React from "react";
 
 
-const Sintomas = () => (
+const Symptom = () => (
   <div className="grid">
     <h1>Sintomas</h1>
   </div>
 );
 
-export default Sintomas;
+export default Symptom;
