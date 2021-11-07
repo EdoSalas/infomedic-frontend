@@ -39,6 +39,29 @@ $menu-width: 295px;
   background-color: $grey-font;
   height: 100vh;
 }
+.display-block{
+  display: inline-block;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+}
+.display-flex{
+  display: flex;
+  justify-content: center;
+}
+.fields-size{
+  width: 90%;
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
+}
+.button-size{
+  margin-right: 0.5rem;
+}
+.content-page{
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
 .block-container {
   display: inline-block;
   justify-content: center;
@@ -364,7 +387,7 @@ p {
   }
   .grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-column-gap: 0.8rem;
     padding: 1rem;
   }
@@ -462,7 +485,7 @@ p {
 @media only screen and (min-width: 941px) and (max-width: 1024px) {
   .grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-column-gap: 0.7rem;
     padding: 0.7rem;
   }
