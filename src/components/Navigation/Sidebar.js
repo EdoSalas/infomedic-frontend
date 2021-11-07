@@ -302,10 +302,11 @@ function Sidebar({ open, setOpen }) {
               className="sidebar-menu-item bottom"
               role="button"
               tabIndex="-1"
-
+              onClick={() => handleLogout()}
+              onKeyDown={() =>null}
             >
 
-              <span onClick={() => handleLogout()}>Salir</span>
+              <span >Salir</span>
 
             </div>
           </div>

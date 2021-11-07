@@ -4,6 +4,7 @@ import { Switch, Route } from "react-router-dom";
 import { useLocalStorage } from "../hooks";
 import Diseases from "./Diseases";
 import Symptom from "./Symptom";
+import RiskFactors from "./RiskFactors";
 import Stadistics from "./Stadistics";
 import Recomendations from "./Recomendations";
 import Configuration from "./Configuration";
@@ -50,7 +51,7 @@ const Pages = (props) => {
                   <Configuration />
                 </Route>
                 <Route path="/">
-                  <Diseases />
+                  <Symptom />
                 </Route>
               </Switch>
             </Container>)}
@@ -62,6 +63,9 @@ const Pages = (props) => {
                   </Route>
                   <Route path="/symptom">
                     <Symptom />
+                  </Route>
+                  <Route path="/risk">
+                    <RiskFactors />
                   </Route>
                   <Route path="/recomendations">
                   <Recomendations />
