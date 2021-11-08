@@ -4,28 +4,29 @@ const url = "https://esalas.me/api";
 
 export const getAll = async () => {
     try {
-        const response = await axios.get(`${url}/diseases/`);
+        const response = await axios.get(`${url}/riskFactor/`);
         return await response.data;
     } catch (error) {
         console.log("Error: ", error);
         return error;
     }
 };
-export const saveDisease = async (disease) => {
+export const deleteFactor = async (id) => {
     try {
-        const response = await axios.post(`${url}/diseases/`, disease);
+        const response = await axios.put(`${url}/riskFactor/delete`, {id});
         return await response.data;
     } catch (error) {
         console.log("Error: ", error);
         return error;
     }
 };
-export const deleteDisease = async (id) => {
+export const saveFactor = async (factor) => {
     try {
-        const response = await axios.put(`https://esalas.me/api/diseases/delete`, {id});
+        const response = await axios.post(`${url}/riskFactor/`, factor);
         return await response.data;
     } catch (error) {
         console.log("Error: ", error);
         return error;
     }
 };
+
