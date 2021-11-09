@@ -11,3 +11,12 @@ export const getCantonesByIdProvince = async (idProvince) => {
         return error;
     }
 };
+export const getCantonById = async (id) => {
+    try {
+        const response = await axios.get(`${url}/cantons/${id}/id` );
+        return await response.data;
+    } catch (error) {
+        console.log("Error: ", error);
+        return error;
+    }
+};
