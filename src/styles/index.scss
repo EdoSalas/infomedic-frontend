@@ -219,6 +219,7 @@ table{
 
 button {
   border-radius: 0.7rem !important;
+  margin-bottom:0.5rem ;
   
 }
 .button{
@@ -471,7 +472,7 @@ p {
 
 @media screen and (max-width: 900px) {
   .main-page-container {
-    font-family: "Capriola", sans-serif;
+    font-family: 'Heebo', sans-serif;
     &.open {
       opacity: 0.5;
     }
