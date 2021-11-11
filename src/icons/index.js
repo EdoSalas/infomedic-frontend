@@ -31,6 +31,7 @@ import {
   faExclamationCircle,
   faUserCog,
   faChartArea,
+  faCheck,
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
@@ -65,4 +66,5 @@ library.add(
   faExclamationCircle,
   faUserCog,
   faChartArea,
+  faCheck,
 );

@@ -30,6 +30,10 @@ const AdminRecomendations = () => {
             const user = await saveRecomendation(newRecomendation)
             if (user.success) {
                 toast.success("¡Nuevo síntoma registrado!")
+                setNewRecomendation({
+                    title: "",
+                    description: "",
+                })
                 getRecomendations();
             }
         } else {

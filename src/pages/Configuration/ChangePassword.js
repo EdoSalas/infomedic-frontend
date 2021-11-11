@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import PropTypes from "prop-types";
+import md5 from "md5";
 import { useAuth } from "../../context/AuthContext";
 import {changePassword} from "../../Services/users.services";
 import {  Field, Control, Input, Label, Button } from "rbx";
@@ -30,10 +31,10 @@ const Configuration = ({onClose}) => {
         setAuthState((prev) => ({ ...prev, user: user.data }));
       }
     }
-    const handleChangePassword = (e) => {
+    const handleChangePassword = async(e) => {
         e.preventDefault();
         console.log(authState.user.password, password.passwordActual)
-        if(password.passwordActual !== authState.user.password){
+        if( await md5(password.passwordActual) !== authState.user.password){
             toast.error("¡La contraseña actual suministrada es incorrecta!")
         }else {
             if(password.passwordNew === password.passwordConfirm){

@@ -29,6 +29,9 @@ const RiskFactors = () => {
       const user = await saveFactor(newFactor)
       if (user.success) {
         toast.success("¡Nuevo factor de riesgo registrado!")
+        setNewFactor({
+          name: "",
+        })
         getFactors();
       }
     } else {

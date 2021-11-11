@@ -26,7 +26,7 @@ const Configuration = () => {
   const handleChangeProvince = (name, value) => {
     setProvince(prev => ({ ...prev, [name]: value }))
   }
-  console.log(authState.user)
+  
   const validateData = () => {
     if (stateUserReg.id !== "" && stateUserReg.name !== "" &&
       stateUserReg.lastname !== "" && stateUserReg.dateOfBirth !== "" &&

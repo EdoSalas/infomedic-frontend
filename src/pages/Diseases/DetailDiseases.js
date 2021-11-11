@@ -4,14 +4,16 @@ import { toast } from "react-toastify";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Field, Control, Input, Button, Icon } from "rbx";
 import { useAuth, useModal } from "../../context";
-import { getAll as getAllDiseases } from "../../services/diseases.services";
+import { getAll as getAllDiseases, updateDisease } from "../../services/diseases.services";
 import { getByDisease } from "../../services/symptom.services";
 import SymptomsCard from "../../components/SymptomsCard/SymptomsCard";
+import MultiSelect from "../../components/MultiSelect/MultiSelect";
 
 const DetailDiseases = ({ disease, setDiseasesList }) => {
-    const [diseaseChange, setDiseaseChange] = useState({ name: "" });
+   
     const [symptoms, setSymptoms] = useState([]);
     const [edit, setEdit] = useState(false);
+    const [diseaseChange, setDiseaseChange] = useState({  name: "" });
 
     const getDiseases = async () => {
         const diseases = await getAllDiseases()
@@ -31,28 +33,40 @@ const DetailDiseases = ({ disease, setDiseasesList }) => {
     const handleChange = (name, value) => {
         setDiseaseChange(prev => ({ ...prev, [name]: value }))
     }
+   
     const handleSave = async (e) => {
         e.preventDefault();
-        // edit
-        /* if (newDisease?.name!=="") {
-           const user = await saveDisease(newDisease)
+        // update
+         if (diseaseChange?.name!=="") {
+           const user = await updateDisease(diseaseChange)
            if (user.success) {
-             toast.success("¡Nueva enfermedad registrada!")
+            setEdit(false);
+             toast.success("¡Nombre de enfermedad actualizado!")
              getDiseases(); 
+            
+           }else {
+               if(diseaseChange?.name===disease.name){
+                toast("¡No se registraron cambios en el nombre de la enfermedad!")
+                setEdit(false);
+               }else{
+                   toast.error("!Ya existe una enfermedad registrada con el nombre suministrado!")
+               }
            }
-         } */
+         } 
     }
 
     useEffect(() => {
 
         getDiseasesDetails();
-        setDiseaseChange(disease);
+        setDiseaseChange({
+            id: disease.id,
+            name: disease.name,
+        });
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
-        <div className="display-block" >
-            <h1>Detalles</h1>
+        <div className="display-diseases" >
             <div className="flex content-page">
                 <Field className="fields-size2">
                     <Control>
@@ -62,13 +76,21 @@ const DetailDiseases = ({ disease, setDiseasesList }) => {
                             onChange={(e) => handleChange(e.target.name, e.target.value)} />
                     </Control>
                 </Field>
+               {!edit && (
                 <Icon className="hover-table-options" size="large">
-                    <FontAwesomeIcon icon="edit" onClick={(e)=>handleEdit(e)}/>
-                </Icon>
+                <FontAwesomeIcon icon="edit" onClick={(e)=>handleEdit(e)}/>
+            </Icon>
+               )} 
+               {edit && (
+                <Icon className="hover-table-options" size="large">
+                <FontAwesomeIcon icon="check" onClick={(e)=>handleSave(e)}/>
+            </Icon>
+               )} 
             </div>
-            <h2>Síntomas</h2>
+           
+            <MultiSelect disease={disease} getDiseasesDetails={getDiseasesDetails} />
             {symptoms?.length > 0 && (
-                <SymptomsCard symptomsList={symptoms} setSymptomsList={setSymptoms} />
+                <SymptomsCard disease={disease} symptomsList={symptoms} getDiseasesDetails={getDiseasesDetails} setSymptomsList={setSymptoms} />
             )}
         </div>
     );

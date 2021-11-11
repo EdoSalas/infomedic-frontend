@@ -18,7 +18,6 @@ const DiseasesCard = ({ diseasesList, setDiseasesList, getDiseases }) => {
   const handleDeleteDisease= async (disease, e) =>{
     e.preventDefault();
     e.stopPropagation();
-    console.log(disease.id)
       const isDeleted = await deleteDisease(disease.id);
       if(isDeleted.success){
         toast.success("¡Enfermedad eliminada con éxito!")

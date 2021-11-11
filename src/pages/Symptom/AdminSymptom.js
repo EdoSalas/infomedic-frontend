@@ -30,6 +30,10 @@ const AdminSymptom = () => {
             const user = await saveSymptom(newSymptom)
             if (user.success) {
                 toast.success("¡Nuevo síntoma registrado!")
+                setNewSymptom({
+                    name: "",
+                    description: "",
+                })
                 getSymptoms();
             }
         } else {
