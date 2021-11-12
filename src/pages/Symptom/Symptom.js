@@ -9,7 +9,7 @@ const Symptom = () => {
   <AdminSymptom />
 ):(
   <div className="grid">
-    <h1>Sintomas</h1>
+    <h1>Síntomas</h1>
   </div>
 );
 }

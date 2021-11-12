@@ -49,7 +49,7 @@ const AdminRecomendations = () => {
 
     return (
         <div className="display-block" >
-            <h1>Síntomas</h1>
+            <h1>Recomendaciones Médicas</h1>
             <Field className="fields-size">
                     <Control>
                         <Input type="text" name="title"

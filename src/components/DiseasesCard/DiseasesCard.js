@@ -13,7 +13,7 @@ const DiseasesCard = ({ diseasesList, setDiseasesList, getDiseases }) => {
 
   const handleShowInfo =(e, disease) => {
     e.preventDefault();
-    setModalOpen(true, <DetailDiseases disease={disease} setDiseasesList={setDiseasesList} onClose={() => setModalOpen(false)} />);
+    setModalOpen(true, <DetailDiseases disease={disease} getDiseases={getDiseases} setDiseasesList={setDiseasesList} onClose={() => setModalOpen(false)} />);
   }
   const handleDeleteDisease= async (disease, e) =>{
     e.preventDefault();

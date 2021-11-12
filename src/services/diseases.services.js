@@ -14,6 +14,7 @@ export const getAll = async () => {
 export const saveDisease = async (disease) => {
     try {
         const response = await axios.post(`${url}/diseases/`, disease);
+       
         return await response.data;
     } catch (error) {
         console.log("Error: ", error);

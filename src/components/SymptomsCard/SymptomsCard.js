@@ -7,7 +7,7 @@ import "../../styles/index.scss";
 import {removeSymptomsForDisease} from "../../services/diseases.services"
 
 const SymptomsCard = ({ symptomsList, setSymptomsList, getDiseasesDetails, disease }) => {
-
+  
   const handleDeleteSymptom= async (symptom, e) =>{
     e.preventDefault();
     e.stopPropagation();

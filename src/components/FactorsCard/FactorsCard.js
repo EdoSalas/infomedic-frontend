@@ -3,17 +3,17 @@ import PropTypes from "prop-types";
 import { Card, Icon } from "rbx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useModal } from "../../context";
-// import DetailDiseases from "../../pages/Diseases/DetailDiseases";
 import { deleteFactor } from "../../services/riskfactors.services";
 import "../../styles/index.scss";
 import { toast } from "react-toastify";
+import FactorDetails from "../../pages/RiskFactors/FactorDetails";
 
 const FactorsCard = ({ factorList, setFactorList, getFactors }) => {
   const { setModalOpen } = useModal();
 
-  const handleShowInfo =(e, disease) => {
+  const handleShowInfo =(e, factor) => {
     e.preventDefault();
- //   setModalOpen(true, <DetailDiseases disease={disease} setDiseasesList={setDiseasesList} onClose={() => setModalOpen(false)} />);
+    setModalOpen(true, <FactorDetails factor={factor} setFactorList={setFactorList} onClose={() => setModalOpen(false)} />);
   }
   const handleDeleteFactor= async (factor, e) =>{
     e.preventDefault();

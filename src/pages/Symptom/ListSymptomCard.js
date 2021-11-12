@@ -6,14 +6,16 @@ import { useModal } from "../../context";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {deleteSymptom} from "../../services/symptom.services"
 import "../../styles/index.scss";
+import DetailSymptom from "../../pages/Symptom/DetailSymptom";
 
 const ListSymptomCard = ({ symptomsList, setSymptomsList,getSymptoms }) => {
     const { setModalOpen } = useModal();
 
-    const handleShowInfo =(e, disease) => {
+    const handleShowInfo =(e, symptom) => {
       e.preventDefault();
-     // setModalOpen(true, <DetailDiseases disease={disease} setDiseasesList={setDiseasesList} onClose={() => setModalOpen(false)} />);
+      setModalOpen(true, <DetailSymptom symptom={symptom} setSymptomsList={setSymptomsList} onClose={() => setModalOpen(false)} />);
     }
+  
   const handleDeleteSymptom = async (symptom, e) => {
     e.preventDefault();
     e.stopPropagation();

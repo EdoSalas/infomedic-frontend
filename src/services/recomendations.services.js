@@ -30,3 +30,13 @@ export const saveRecomendation = async (recomendation) => {
     }
 };
 
+export const updateRecomendation = async (recomendation) => {
+    try {
+        const response = await axios.put(`https://esalas.me/api/medical/`, recomendation);
+        return await response.data;
+    } catch (error) {
+        console.log("Error: ", error);
+        return error;
+    }
+};
+

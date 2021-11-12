@@ -29,4 +29,13 @@ export const saveFactor = async (factor) => {
         return error;
     }
 };
+export const updateFactor = async (factor) => {
+    try {
+        const response = await axios.put(`https://esalas.me/api/riskFactor/`, factor);
+        return await response.data;
+    } catch (error) {
+        console.log("Error: ", error);
+        return error;
+    }
+};
 

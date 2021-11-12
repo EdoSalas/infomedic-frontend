@@ -70,7 +70,7 @@ const Configuration = () => {
 
     getProvince();
     var curr = new Date(authState?.user?.dateOfBirth);
-    curr.setDate(curr.getDate() + 3);
+    curr.setDate(curr.getDate());
     var date = curr.toISOString().substr(0,10);
     setstateUserReg(prev => ({ ...prev, dateOfBirth: date }))
     // eslint-disable-next-line react-hooks/exhaustive-deps

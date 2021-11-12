@@ -27,14 +27,19 @@ const AdminSymptom = () => {
     const handleSave = async (e) => {
         e.preventDefault();
         if (newSymptom?.name !== "") {
-            const user = await saveSymptom(newSymptom)
-            if (user.success) {
+            const symptomResponse = await saveSymptom(newSymptom)
+            console.log(symptomResponse);
+
+            if (symptomResponse.success) {
                 toast.success("¡Nuevo síntoma registrado!")
                 setNewSymptom({
                     name: "",
                     description: "",
                 })
                 getSymptoms();
+            }else{
+                console.log(symptomResponse)
+                
             }
         } else {
             toast.error("¡El nombre del síntoma es obligatorio!")

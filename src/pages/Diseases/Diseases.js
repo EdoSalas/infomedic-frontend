@@ -27,6 +27,7 @@ const Diseases = () => {
     e.preventDefault();
     if (newDisease?.name !== "") {
       const user = await saveDisease(newDisease)
+      console.log(user)
       if (user.success) {
         toast.success("¡Nueva enfermedad registrada!")
         setNewDisease({

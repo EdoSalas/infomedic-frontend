@@ -5,14 +5,16 @@ import { Card, Icon, Button } from "rbx";
 import { useModal } from "../../context";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {deleteRecomendation} from "../../services/recomendations.services";
+import RecomendationDetail from "./RecomendationDetail";
 import "../../styles/index.scss";
+
 
 const RecomendationCard = ({ recomendationList, setRecomendationList,getRecomendations }) => {
     const { setModalOpen } = useModal();
 
-    const handleShowInfo =(e, disease) => {
+    const handleShowInfo =(e, recomendation) => {
       e.preventDefault();
-     // setModalOpen(true, <DetailDiseases disease={disease} setDiseasesList={setDiseasesList} onClose={() => setModalOpen(false)} />);
+      setModalOpen(true, <RecomendationDetail recomendation={recomendation} setRecomendationList={setRecomendationList} onClose={() => setModalOpen(false)} />);
     }
   const handleDeleteRecomendation= async (symptom, e) => {
     e.preventDefault();
