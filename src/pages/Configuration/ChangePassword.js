@@ -52,21 +52,21 @@ const Configuration = ({onClose}) => {
                 <Field>
                     <Control>
                         <Label>Contraseña Actual:</Label>
-                        <Input type="password" name="passwordActual" placeholder="Contraseña" value={password.passwordActual}
+                        <Input type="password" maxLength="200" name="passwordActual" placeholder="Contraseña" value={password.passwordActual}
                             onChange={(e) => handlePasswordChange(e.target.name, e.target.value)} />
                     </Control>
                 </Field>
                 <Field>
                     <Control>
                         <Label>Nueva Contraseña:</Label>
-                        <Input type="password" name="passwordNew" placeholder="Contraseña" value={password.passwordNew}
+                        <Input type="password" maxLength="200" name="passwordNew" placeholder="Contraseña" value={password.passwordNew}
                             onChange={(e) => handlePasswordChange(e.target.name, e.target.value)} />
                     </Control>
                 </Field>
                 <Field>
                     <Control>
                         <Label>Confirme la contraseña:</Label>
-                        <Input type="password" name="passwordConfirm" placeholder="Confirme la contraseña" value={password.passwordConfirm}
+                        <Input type="password" maxLength="200" name="passwordConfirm" placeholder="Confirme la contraseña" value={password.passwordConfirm}
                             onChange={(e) => handlePasswordChange(e.target.name, e.target.value)} />
                     </Control>
                 </Field>

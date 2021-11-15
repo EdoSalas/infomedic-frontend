@@ -6,11 +6,7 @@ import {addSymptomsForDisease} from "../../services/diseases.services"
 import "../../styles/index.scss";
 
 const MultiSelect = ({getDiseasesDetails, disease}) => {
-    const [state, setState] = useState({
-        selectOptions: [],
-        id: "",
-        name: ''
-    })
+  
    
     const [list, setList] = useState([]);
 
@@ -32,8 +28,8 @@ const MultiSelect = ({getDiseasesDetails, disease}) => {
         //add new symptom
         const symptomAndDisease =
         {
-            "disease": parseInt(disease.id),
-            "symptom": parseInt(e.value),
+            "disease": parseInt(disease.id,10),
+            "symptom": parseInt(e.value,10),
         }
         const res = await addSymptomsForDisease(symptomAndDisease);
         const data = res;

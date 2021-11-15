@@ -86,28 +86,28 @@ const Configuration = () => {
         <Field>
           <Control>
             <Label>Correo electrónico:</Label>
-            <Input required type="email" name="email" placeholder="Correo electrónico" value={stateUserReg.email}
+            <Input required type="email" maxLength="45" name="email" placeholder="Correo electrónico" value={stateUserReg.email}
               onChange={(e) => handleChange(e.target.name, e.target.value)} />
           </Control>
         </Field>
         <Field>
           <Control>
             <Label>Nombre:</Label>
-            <Input type="text" name="name" placeholder="Nombre" value={stateUserReg.name}
+            <Input type="text" maxLength="45" name="name" placeholder="Nombre" value={stateUserReg.name}
               onChange={(e) => handleChange(e.target.name, e.target.value)} />
           </Control>
         </Field>
         <Field>
           <Control>
             <Label>Apellidos:</Label>
-            <Input type="text" name="lastname" placeholder="Apellidos" value={stateUserReg.lastname}
+            <Input type="text" maxLength="45" name="lastname" placeholder="Apellidos" value={stateUserReg.lastname}
               onChange={(e) => handleChange(e.target.name, e.target.value)} />
           </Control>
         </Field>
         <Field>
           <Control>
             <Label>Fecha de nacimiento:</Label>
-            <Input type="date" name="dateOfBirth" placeholder="Fecha de nacimiento:" value={stateUserReg.dateOfBirth}
+            <Input type="date" maxLength="45" name="dateOfBirth" placeholder="Fecha de nacimiento:" value={stateUserReg.dateOfBirth}
               onChange={(e) => handleChange(e.target.name, e.target.value)} />
           </Control>
         </Field>

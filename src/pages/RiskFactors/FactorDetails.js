@@ -63,7 +63,9 @@ const FactorDetails = ({ factor, setFactorList, onClose }) => {
             <div className="flex">
             <Field className="fields-size2">
                     <Control>
-                        <Input disabled={!edit} type="text" name="name"
+                        <Input disabled={!edit} type="text" 
+                        maxLength="45"
+                        name="name"
                             placeholder="Nombre"
                             value={factorChange?.name}
                             onChange={(e) => handleChange(e.target.name, e.target.value)} />

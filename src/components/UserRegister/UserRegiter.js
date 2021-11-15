@@ -81,28 +81,28 @@ const handlePasswordChange = (name, value) =>{
         <Field>
           <Control>
             <Label>Correo electrónico:</Label>
-            <Input required type="email" name="email" placeholder="Correo electrónico" value={stateUserReg.email}
+            <Input required type="email" maxLength="45" name="email" placeholder="Correo electrónico" value={stateUserReg.email}
               onChange={(e) => handleChange(e.target.name, e.target.value)} />
           </Control>
         </Field>
         <Field>
           <Control>
             <Label>Nombre:</Label>
-            <Input type="text" name="name" placeholder="Nombre" value={stateUserReg.name}
+            <Input type="text" maxLength="45" name="name" placeholder="Nombre" value={stateUserReg.name}
               onChange={(e) => handleChange(e.target.name, e.target.value)} />
           </Control>
         </Field>
         <Field>
           <Control>
             <Label>Apellidos:</Label>
-            <Input type="text" name="lastname" placeholder="Apellidos" value={stateUserReg.lastName}
+            <Input type="text" maxLength="45" name="lastname" placeholder="Apellidos" value={stateUserReg.lastName}
               onChange={(e) => handleChange(e.target.name, e.target.value)} />
           </Control>
         </Field>
         <Field>
           <Control>
             <Label>Cédula de identidad:</Label>
-            <Input type="text" name="id" placeholder="Cédula de identidad" value={stateUserReg.id}
+            <Input type="text" maxLength="45" name="id" placeholder="Cédula de identidad" value={stateUserReg.id}
               onChange={(e) => handleChange(e.target.name, e.target.value)} />
           </Control>
         </Field>
@@ -127,14 +127,14 @@ const handlePasswordChange = (name, value) =>{
         <Field>
           <Control>
           <Label>Contraseña:</Label>
-          <Input type="password" name="password" placeholder="Contraseña" value={password.password}
+          <Input type="password" maxLength="200" name="password" placeholder="Contraseña" value={password.password}
           onChange={(e) => handlePasswordChange(e.target.name, e.target.value)} />
           </Control>
         </Field>
         <Field>
           <Control>
           <Label>Confirme la contraseña:</Label>
-          <Input type="password" name="passwordConfirm" placeholder="Confirme la contraseña" value={password.passwordConfirm}
+          <Input type="password" maxLength="200" name="passwordConfirm" placeholder="Confirme la contraseña" value={password.passwordConfirm}
           onChange={(e) => handlePasswordChange(e.target.name, e.target.value)} />
           </Control>
         </Field>

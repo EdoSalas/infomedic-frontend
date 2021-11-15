@@ -64,7 +64,9 @@ const FactorDetails = ({ symptom, setSymptomsList, onClose }) => {
                 <div className="flex">
                     <Field className="fields-size2">
                         <Control>
-                            <Input disabled={!edit} type="text" name="name"
+                            <Input disabled={!edit} type="text" 
+                            maxLength="45"
+                            name="name"
                                 placeholder="Nombre de la enfermedad"
                                 value={symptomChange?.name}
                                 onChange={(e) => handleChange(e.target.name, e.target.value)} />
@@ -83,7 +85,9 @@ const FactorDetails = ({ symptom, setSymptomsList, onClose }) => {
                 </div>
                 <Field className="fields-size2">
                     <Control>
-                        <Textarea disabled={!edit} type="text" name="description"
+                        <Textarea disabled={!edit} type="text" 
+                        maxLength="200"
+                        name="description"
                             placeholder="Descripción"
                             value={symptomChange?.description}
                             onChange={(e) => handleChange(e.target.name, e.target.value)} />

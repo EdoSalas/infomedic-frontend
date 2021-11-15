@@ -15,11 +15,11 @@ const SymptomsCard = ({ symptomsList, setSymptomsList, getDiseasesDetails, disea
       "symptom": parseInt(symptom.id, 10),
      "disease": parseInt(disease.id, 10)
     }
-      const isDeleted = await removeSymptomsForDisease(param);
-      if(isDeleted.success){
-        toast.success("Síntoma eliminado con éxito!")
-        getDiseasesDetails();
-      }
+        const isDeleted = await removeSymptomsForDisease(param);
+        if(isDeleted.success){
+          toast.success("Síntoma eliminado con éxito!")
+          getDiseasesDetails();
+        }
   }
   return (
     <div className="grid">

@@ -57,7 +57,9 @@ const AdminSymptom = () => {
             <h1>Síntomas</h1>
             <Field className="fields-size">
                     <Control>
-                        <Input type="text" name="name"
+                        <Input type="text" 
+                        maxLength="45"
+                        name="name"
                             placeholder="Síntoma"
                             value={newSymptom.name}
                             onChange={(e) => handleChange(e.target.name, e.target.value)} />
@@ -65,7 +67,9 @@ const AdminSymptom = () => {
                 </Field>
                 <Field className="fields-size">
                 <Control>
-                    <Input type="text" name="description"
+                    <Input type="text" 
+                    maxLength="200"
+                    name="description"
                         placeholder="Descripción"
                         value={newSymptom.description}
                         onChange={(e) => handleChange(e.target.name, e.target.value)} />

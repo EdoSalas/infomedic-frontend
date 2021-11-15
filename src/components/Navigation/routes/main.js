@@ -10,6 +10,16 @@ const MAIN_ROUTES = [
     to: "/symptom",
   },
   {
+    name: "risk",
+    label: "Factores de riesgo ",
+    icon: "exclamation-circle",
+    active: (location) => {
+      const [, p] = location.pathname.split("/");
+      return /risk/.test(p);
+    },
+    to: "/risk",
+  },
+  {
       name: "stadistics",
       label: "Estadísticas",
       icon: "chart-area",

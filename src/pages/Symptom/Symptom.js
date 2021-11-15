@@ -1,6 +1,7 @@
 import React from "react";
 import { useAuth } from "../../context/AuthContext";
 import AdminSymptom from "./AdminSymptom";
+import UserSymptom from "./UserSymptom";
 
 
 const Symptom = () => {
@@ -8,9 +9,7 @@ const Symptom = () => {
   return authState.user.type===1 ?(
   <AdminSymptom />
 ):(
-  <div className="grid">
-    <h1>Síntomas</h1>
-  </div>
+  <UserSymptom />
 );
 }
 export default Symptom;

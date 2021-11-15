@@ -38,4 +38,13 @@ export const updateFactor = async (factor) => {
         return error;
     }
 };
+export const getByUser = async (userID) => {
+    try {
+        const response = await axios.get(`${url}/riskFactorForUser/${userID}/user`);
+        return await response.data;
+    } catch (error) {
+        console.log("Error: ", error);
+        return error;
+    }
+}
 

@@ -41,6 +41,9 @@ const Pages = (props) => {
                 <Route path="/symptom">
                   <Symptom />
                 </Route>
+                <Route path="/risk">
+                    <RiskFactors />
+                </Route>
                 <Route path="/stadistics">
                   <Stadistics />
                 </Route>

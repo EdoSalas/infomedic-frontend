@@ -21,6 +21,15 @@ export const getByDisease = async (symptomID) => {
         return error;
     }
 };
+export const getByUser = async (userID) => {
+    try {
+        const response = await axios.get(`${url}/symptomsForUser/${userID}/user`);
+        return await response.data;
+    } catch (error) {
+        console.log("Error: ", error);
+        return error;
+    }
+}
 export const saveSymptom = async (symptom) => {
     try {
         const response = await axios.post(`${url}/symptoms/`, symptom);
@@ -34,7 +43,6 @@ export const saveSymptom = async (symptom) => {
 };
 export const deleteSymptom = async (id) => {
     try {
-        console.log(id)
         const response = await axios.put(`${url}/symptoms/delete`, {id});
         return await response.data;
     } catch (error) {

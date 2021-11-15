@@ -69,7 +69,9 @@ const DetailDiseases = ({ disease, setDiseasesList }) => {
             <div className="flex content-page">
                 <Field className="fields-size2">
                     <Control>
-                        <Input disabled={!edit} type="text" name="name"
+                        <Input disabled={!edit} type="text" 
+                        maxLength="45"
+                        name="name"
                             placeholder="Nombre de la enfermedad"
                             value={diseaseChange?.name}
                             onChange={(e) => handleChange(e.target.name, e.target.value)} />

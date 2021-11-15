@@ -51,7 +51,9 @@ const Diseases = () => {
       <h1>Enfermedades</h1>
       <Field className="fields-size">
         <Control>
-          <Input type="text" name="name"
+          <Input type="text" 
+          maxLength="45"
+          name="name"
             placeholder="Nombre de la enfermedad"
             value={newDisease.name}
             onChange={(e) => handleChange(e.target.name, e.target.value)} />

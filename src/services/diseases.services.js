@@ -11,6 +11,16 @@ export const getAll = async () => {
         return error;
     }
 };
+export const getByUser = async (userID) => {
+    try {
+        
+        const response = await axios.post(`${url}/reports/diseasesForUser`, userID );
+        return await response.data;
+    } catch (error) {
+        console.log("Error: ", error);
+        return error;
+    }
+}
 export const saveDisease = async (disease) => {
     try {
         const response = await axios.post(`${url}/diseases/`, disease);
