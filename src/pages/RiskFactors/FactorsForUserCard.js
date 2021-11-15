@@ -14,7 +14,7 @@ const FactorsForUserCard = ({ riskList, getAllFactorsUser, getOptions }) => {
         e.stopPropagation();
         console.log(factor.pk)
         const param = {
-            pk: factor.pk,
+            id: factor.pk,
         }
         const isDeleted = await removeFactorForUser(param);
         if (isDeleted.success) {

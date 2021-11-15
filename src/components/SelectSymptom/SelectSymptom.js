@@ -17,6 +17,8 @@ import { useAuth, useModal } from "../../context";
             {
                 "user": parseInt(authState.user.id, 10),
                 "symptom": parseInt(e.value, 10),
+                "date": new Date().toISOString(),
+
             }
             const res = await addSymptomsForUser(symptomAndUser);
             const data = res;

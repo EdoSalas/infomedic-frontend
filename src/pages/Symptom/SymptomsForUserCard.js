@@ -15,7 +15,7 @@ const SymptomsForUserCard = ({ symptomsList, setSymptomsList, getAllSymptomsForU
         console.log(symptom);
 
         const param = {
-            "pk": symptom.pk,
+            "id": symptom.pk,
         }
         const isDeleted = await removeSymptomsForUser(param);
         if (isDeleted.success) {
