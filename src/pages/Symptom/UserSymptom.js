@@ -29,6 +29,8 @@ const UserSymptoms = () => {
         const symptoms = await getByUser(authState.user.id)
         if (symptoms.success) {
             setSymptomsList(symptoms.data.symptomInfo)
+        }else{
+            setSymptomsList([])
         }
     }
     const handleShowInfo = (e) => {

@@ -32,6 +32,7 @@ import {
   faUserCog,
   faChartArea,
   faCheck,
+  faFileAlt
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
@@ -67,4 +68,5 @@ library.add(
   faUserCog,
   faChartArea,
   faCheck,
+  faFileAlt
 );

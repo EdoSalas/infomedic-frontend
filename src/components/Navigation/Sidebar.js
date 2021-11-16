@@ -120,17 +120,7 @@ function Sidebar({ open, setOpen }) {
   const permissions = ["Main"];
   const routes = getRoutes("Main");
   const routesAdmin = getAdminRoutes("Main");
-  /* const users = collection(db, "usuarios");
-  const [Username, setUserName] = useState("")
-
-  const getUserName = async () =>{ 
-    const bdDocs = await getDocs(users);
-    const data = bdDocs.docs.map(doc => doc.data());
-    // await db.collection("usuarios").get();
-    setUserName(data[0].Nombre);
-   // return name;
-
- } */
+ 
 
 
   const availableRoutes = routes.filter((route) =>
