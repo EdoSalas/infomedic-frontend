@@ -40,6 +40,16 @@ const MAIN_ROUTES = [
       to: "/recomendations",
     },
     {
+      name: "stadistics",
+      label: "Estadísticas",
+      icon: "chart-area",
+      active: (location) => {
+        const [, p] = location.pathname.split("/");
+        return /stadistics/.test(p);
+      },
+      to: "/stadistics",
+    },
+    {
       name: "configuration",
       label: "Configuración",
       icon: "user-cog",

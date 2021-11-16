@@ -208,13 +208,6 @@ function Sidebar({ open, setOpen }) {
                   toggleMenus={toggleActiveMenus}
                 />
               </div>
-              {/* <Link
-              className="navigation-item navigation-item--brand"
-              style={{ display: "flex" }}
-              to="/"
-            >
-              LIMS
-            </Link> */}
             </div>
           </div>
         </Container>
@@ -249,11 +242,7 @@ function Sidebar({ open, setOpen }) {
               </div>
             </div>
           </div>
-          <div className="header-container">
-            <div>
 
-            </div>
-          </div>
           <hr />
           <div className="sidebar-menu">
             {authState.user.type=== 0 && availableRoutes.map((r, i) => (
