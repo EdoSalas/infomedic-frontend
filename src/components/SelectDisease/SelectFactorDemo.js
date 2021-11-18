@@ -2,25 +2,23 @@ import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { Control, Label } from "rbx";
 import Select from 'react-select';
-import { getAll as getAllDiseases } from "../../services/diseases.services";
+import { getAll as getAllFactor } from "../../services/riskfactors.services";
 import "../../styles/index.scss";
 import "../../components/SelectProvince/SelectProvince.scss";
 
-const SelectDisease = ({ onChange, label, disabled }) => {
-    const [diseases, setDiseases] = useState();
-
+const SelectFactorDemo = ({ onChange, label, disabled }) => {
+    const [factors, setFactors] = useState();
 
     const getOptions = async () => {
-        const res = await getAllDiseases()
+        const res = await getAllFactor()
         const data = res.data
         const options = data.map(d => ({
             "value": d.id,
             "label": d.name
         })
         )
-        setDiseases({ selectOptions: options })
+        setFactors({ selectOptions: options })
     }
-    console.log(diseases)
     useEffect(() => {
 
         getOptions();
@@ -31,21 +29,21 @@ const SelectDisease = ({ onChange, label, disabled }) => {
             <Label>{""}</Label>
             
                 <Select className="multi-select"
-                    options={diseases?.selectOptions}
+                    options={factors?.selectOptions}
                     onChange={onChange.bind(this)}
-                    placeholder="Buscar enfermedad..." />
+                    placeholder="Buscar factor de riesgo..." />
         </Control>
     );
 };
 
-SelectDisease.propTypes = {
+SelectFactorDemo.propTypes = {
     onChange: PropTypes.func.isRequired,
     disabled: PropTypes.bool,
     label: PropTypes.string.isRequired,
 };
 
-SelectDisease.defaultProps = {
+SelectFactorDemo.defaultProps = {
     disabled: false,
 }
 
-export default SelectDisease;
+export default SelectFactorDemo;

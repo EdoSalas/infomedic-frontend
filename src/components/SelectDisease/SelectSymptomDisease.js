@@ -2,16 +2,16 @@ import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { Control, Label } from "rbx";
 import Select from 'react-select';
-import { getAll as getAllDiseases } from "../../services/diseases.services";
+import { getAll as getAllSymptom } from "../../services/symptom.services";
 import "../../styles/index.scss";
 import "../../components/SelectProvince/SelectProvince.scss";
 
-const SelectDisease = ({ onChange, label, disabled }) => {
-    const [diseases, setDiseases] = useState();
+const SelectSymptomDisease = ({ onChange, label, disabled }) => {
+    const [symptoms, setDiseases] = useState();
 
 
     const getOptions = async () => {
-        const res = await getAllDiseases()
+        const res = await getAllSymptom()
         const data = res.data
         const options = data.map(d => ({
             "value": d.id,
@@ -20,7 +20,7 @@ const SelectDisease = ({ onChange, label, disabled }) => {
         )
         setDiseases({ selectOptions: options })
     }
-    console.log(diseases)
+   
     useEffect(() => {
 
         getOptions();
@@ -31,21 +31,23 @@ const SelectDisease = ({ onChange, label, disabled }) => {
             <Label>{""}</Label>
             
                 <Select className="multi-select"
-                    options={diseases?.selectOptions}
+                    options={symptoms?.selectOptions}
                     onChange={onChange.bind(this)}
-                    placeholder="Buscar enfermedad..." />
+                    placeholder="Buscar síntoma..." />
         </Control>
     );
 };
 
-SelectDisease.propTypes = {
+SelectSymptomDisease.propTypes = {
     onChange: PropTypes.func.isRequired,
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    name: PropTypes.string.isRequired,
     disabled: PropTypes.bool,
     label: PropTypes.string.isRequired,
 };
 
-SelectDisease.defaultProps = {
+SelectSymptomDisease.defaultProps = {
     disabled: false,
 }
 
-export default SelectDisease;
+export default SelectSymptomDisease;

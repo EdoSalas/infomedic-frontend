@@ -4,12 +4,15 @@ import { Field, Control, Input, Button, Textarea } from "rbx";
 import {getAll as getAllRecomendations, saveRecomendation } from "../../services/recomendations.services";
 import "../../styles/index.scss"
 import RecomendationCard from "./RecomendationCard";
+import { useAuth } from "../../context";
 
 const AdminRecomendations = () => {
-
+    const { authState } = useAuth();
     const [newRecomendation, setNewRecomendation] = useState({
         title: "",
         description: "",
+        user: authState.user.id,
+
     })
     const [recomendationList, setRecomendationList] = useState([]);
 

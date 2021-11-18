@@ -35,7 +35,7 @@ const ListReports = ({ setIsPresent, isPresent }) => {
         },
         {
             id: 6,
-            name: "Cantidad de síntomas por cantón",
+            name: "5 cantones con más síntomas",
             icon: "chart-area",
         },
         {
@@ -50,8 +50,13 @@ const ListReports = ({ setIsPresent, isPresent }) => {
         },
         {
             id: 9,
-            name: "Cantones que contengan un factor de riesgo en específico",
-            icon: "file-alt",
+            name: "Cantidad de síntomas por genero",
+            icon: "chart-area",
+        },
+        {
+            id: 10,
+            name: "Cantidad de usuarios más afectados por edades",
+            icon: "chart-area",
         },
 
     ];

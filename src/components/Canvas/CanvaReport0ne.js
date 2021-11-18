@@ -23,7 +23,7 @@ const getStyles = () => {
     };
 };
 const barStyle = getStyles();
-const CanvaReportOne = ({ data, tick, tickF, labelx, labely, orientationx, orientationy }) => {
+const CanvaReportOne = ({ data, tick, tickF, labelx, labely, orientationx, orientationy, horizontal, axis }) => {
 console.log(data, tick, labelx, labely, orientationx, orientationy);
     return (
         <div className="animate__animated animate__bounceInLeft">
@@ -51,20 +51,21 @@ console.log(data, tick, labelx, labely, orientationx, orientationy);
                     axisLabel: { padding: 30 }
                 }}
             />
-            {
-                tick.map((d, i) => {
-                  return (
-                    <VictoryAxis dependentAxis
-                      key={i}
-                      label={d}
-                      style={{ tickLabels: { fill: "none" } }}
-                      axisValue={d}
-                    />
-                  );
-                })
+            
+            { axis && (tick.map((d, i) => {
+                return (
+                  <VictoryAxis dependentAxis
+                    key={i}
+                    label={d}
+                    style={{ tickLabels: { fill: "none" } }}
+                    axisValue={d}
+                  />
+                );
+              }))
+                
               }
 
-            <VictoryBar  horizontal
+            <VictoryBar  horizontal={horizontal}
            
                 data={data}
                 x={orientationx}
@@ -78,7 +79,10 @@ console.log(data, tick, labelx, labely, orientationx, orientationy);
         
     )
 }
-
+CanvaReportOne.defaultProps = {
+    horizontal: true,
+    axis: true,
+}
 CanvaReportOne.propTypes = {
     data: PropTypes.array.isRequired,
     tick: PropTypes.array.isRequired,
@@ -87,5 +91,7 @@ CanvaReportOne.propTypes = {
     labely: PropTypes.string.isRequired,
     orientationx: PropTypes.string.isRequired,
     orientationy: PropTypes.string.isRequired,
+    horizontal: PropTypes.bool,
+    axis:PropTypes.bool,
 };
 export default CanvaReportOne;
