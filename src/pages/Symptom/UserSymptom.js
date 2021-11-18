@@ -17,10 +17,10 @@ const UserSymptoms = () => {
     const getOptions = async () => {
         const res = await getAllSymptoms()
         const data = res.data
-        const options = data.map(d => ( {
-                "value": d.id,
-                "label": d.name
-            })  
+        const options = data.map(d => ({
+            "value": d.id,
+            "label": d.name
+        })
         )
         const filterOptions = options.filter((op) => !(symptomsList?.find((index) => index.id === op.value)))
         setList({ selectOptions: filterOptions })
@@ -29,14 +29,14 @@ const UserSymptoms = () => {
         const symptoms = await getByUser(authState.user.id)
         if (symptoms.success) {
             setSymptomsList(symptoms.data.symptomInfo)
-        }else{
+        } else {
             setSymptomsList([])
         }
     }
     const handleShowInfo = (e) => {
         e.preventDefault();
         e.stopPropagation();
-        setModalOpen(true, <DiseasesProbabily  onClose={() => setModalOpen(false)} />);
+        setModalOpen(true, <DiseasesProbabily onClose={() => setModalOpen(false)} />);
 
     }
     useEffect(() => {
@@ -47,21 +47,21 @@ const UserSymptoms = () => {
     }, [])
     useEffect(() => {
         getOptions();
-    },[symptomsList])
+    }, [symptomsList])
 
     return (
         <div className="display-block" >
             <h1>Síntomas</h1>
             <h3 className="leyendas">Los síntomas aquí registrados serán eliminados automáticamente después de una semana apartir del día del registro.
-            Si aún continúa con el síntoma; favor volver a registrarlo.</h3>
+                Si aún continúa con el síntoma; favor volver a registrarlo.</h3>
             <Button color="primary" onClick={(e) => handleShowInfo(e)}>Ver enfermedades relacionadas</Button>
             {list?.selectOptions?.length > 0 && (
                 <SelectSymptom getAllSymptomsUser={getAllSymptomsUser} symptomsList={symptomsList} list={list} />
             )}
             {symptomsList?.length > 0 && (
-                
-                <SymptomsForUserCard symptomsList={symptomsList} setSymptomsList={setSymptomsList} getAllSymptomsForUser={getAllSymptomsUser} getOptions={getOptions}/>
-                
+
+                <SymptomsForUserCard symptomsList={symptomsList} setSymptomsList={setSymptomsList} getAllSymptomsForUser={getAllSymptomsUser} getOptions={getOptions} />
+
             )}
 
         </div>

@@ -17,6 +17,8 @@ const AdminRisk = () => {
     const diseases = await getAllFactors()
     if (diseases.success) {
       setFactorList(diseases.data)
+    }else{
+      setFactorList([])
     }
   }
 

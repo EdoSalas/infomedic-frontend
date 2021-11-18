@@ -17,6 +17,8 @@ const Diseases = () => {
     const diseases = await getAllDiseases()
     if (diseases.success) {
       setDiseasesList(diseases.data)
+    }else{
+      setDiseasesList([])
     }
   }
 

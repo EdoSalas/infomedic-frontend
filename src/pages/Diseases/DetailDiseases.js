@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { toast } from "react-toastify";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Field, Control, Input, Icon } from "rbx";
+import { Field, Control, Input, Icon, Card } from "rbx";
 import { getAll as getAllDiseases, updateDisease } from "../../services/diseases.services";
 import { getByDisease } from "../../services/symptom.services";
 import SymptomsCard from "../../components/SymptomsCard/SymptomsCard";
@@ -24,6 +24,8 @@ const DetailDiseases = ({ disease, setDiseasesList }) => {
         const symptoms = await getByDisease(disease.id);
         if (symptoms.success) {
             setSymptoms(symptoms?.data?.symptomInfo)
+        }else{
+            setSymptoms([])
         }
     }
     const handleEdit = (e) => {
@@ -88,8 +90,21 @@ const DetailDiseases = ({ disease, setDiseasesList }) => {
                     </Icon>
                 )}
             </div>
-
             <MultiSelect disease={disease} getDiseasesDetails={getDiseasesDetails} />
+            {symptoms?.length === 0 && (
+
+                <div className="grid">
+
+                    <Card
+                        key={1}
+                        className="card-content display-flex hover-table-options"
+                    >
+                        <h2>{"Síntomas"}</h2>
+                    </Card>
+
+                </div>
+            )}
+
             {symptoms?.length > 0 && (
                 <SymptomsCard disease={disease} symptomsList={symptoms} getDiseasesDetails={getDiseasesDetails} setSymptomsList={setSymptoms} />
             )}

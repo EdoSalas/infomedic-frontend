@@ -16,11 +16,12 @@ const AdminRecomendations = () => {
     })
     const [recomendationList, setRecomendationList] = useState([]);
 
-
     const getRecomendations = async () => {
         const recomendations = await getAllRecomendations()
         if (recomendations.success) {
             setRecomendationList(recomendations.data)
+        }else{
+            setRecomendationList([])
         }
     }
 
@@ -56,6 +57,7 @@ const AdminRecomendations = () => {
             <Field className="fields-size">
                 <Control>
                     <Input type="text" name="title"
+                        maxLength="45"
                         placeholder="Recomendación"
                         value={newRecomendation.title}
                         onChange={(e) => handleChange(e.target.name, e.target.value)} />
@@ -65,6 +67,7 @@ const AdminRecomendations = () => {
                 <Control>
                     <Textarea className="text-size" type="text" name="description"
                         placeholder="Descripción"
+                        maxLength="200"
                         value={newRecomendation.description}
                         onChange={(e) => handleChange(e.target.name, e.target.value)} />
                 </Control>

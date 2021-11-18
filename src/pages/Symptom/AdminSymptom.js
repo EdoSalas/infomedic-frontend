@@ -18,6 +18,8 @@ const AdminSymptom = () => {
         const diseases = await getAllSymptom()
         if (diseases.success) {
             setSymptomList(diseases.data)
+        }else{
+            symptomList([])
         }
     }
 
