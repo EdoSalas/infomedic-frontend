@@ -1,16 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {Table} from "rbx"
+import { Table } from "rbx"
 import "../../styles/index.scss";
 
-
-
-const Tables = ({dataList, title}) => {
-
-  
-    return (
-        <div className="display-block">
-        <Table className="table-report" bordered fullwidth hoverable narrow striped>
+const Tables = ({ dataList, title }) => {
+  return (
+    <div className="display-block">
+      <Table className="table-report" bordered fullwidth hoverable narrow striped>
         <Table.Head>
           <Table.Row>
             <Table.Heading className="color-table">
@@ -28,12 +24,12 @@ const Tables = ({dataList, title}) => {
           ))}
         </Table.Body>
       </Table>
-        </div>
-    )
+    </div>
+  )
 };
 
 Tables.propTypes = {
-    dataList: PropTypes.array.isRequired,   
+  dataList: PropTypes.array.isRequired,
 };
 
 export default Tables;

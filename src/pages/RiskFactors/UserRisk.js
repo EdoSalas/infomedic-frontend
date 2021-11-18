@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Button } from "rbx";
 import { getAll as getAllFactors, getByUser } from "../../services/riskfactors.services";
-import { useAuth, useModal } from "../../context";
+import { useAuth } from "../../context";
 import SelectFactor from "../../components/SelectFactor/SelectFactor";
 import FactorsForUserCard from "./FactorsForUserCard";
 
 const UserRisk = () => {
-    const { setModalOpen } = useModal();
+  
     const { authState } = useAuth();
     const [riskList, setRiskList] = useState([]);
 

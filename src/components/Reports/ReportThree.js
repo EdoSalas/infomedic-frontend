@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { toast } from "react-toastify";
-import { Title, Field, Control, Input, Label, Button } from "rbx";
+import { Field, Control, Button } from "rbx";
 import "../../styles/index.scss";
-import SelectRegion from "../Demographics/RegionCard";
-import { diseasesBysymptoms } from "../../services/report.services"
-import CanvaReportOne from "../Canvas/CanvaReport0ne";
+import { diseasesBysymptoms } from "../../services/report.services";
 import Tables from "../Tables/Tables";
 import SelectSymptomDisease from "../SelectDisease/SelectSymptomDisease";
 
@@ -24,25 +22,25 @@ const ReportThree = ({ setIsPresent }) => {
     }
     const handleGenerar = async (e) => {
         e.preventDefault();
-        if(rango?.symptom === 0){
+        if (rango?.symptom === 0) {
             toast.error("Debe seleccionar un síntoma")
-        }else{
+        } else {
             const result = await diseasesBysymptoms(rango)
             if (result?.success) {
-    
-                 setTitle({
-                     title: ``,
-                 })
-                 setTitleTable("Enfermedades que presentan el síntoma")
-                 setData(result?.data?.map((index) => ({
+
+                setTitle({
+                    title: ``,
+                })
+                setTitleTable("Enfermedades que presentan el síntoma")
+                setData(result?.data?.map((index) => ({
                     id: index.id,
                     name: index.name,
-                 }))); 
-    
+                })));
+
             }
             setVacio(true);
         }
-        
+
 
     }
     const handleCancel = (e) => {
@@ -59,13 +57,11 @@ const ReportThree = ({ setIsPresent }) => {
     return (
         <div className="display-block">
             <div className="stadisticts-container">
-
                 <Field>
                     <Control>
                         <SelectSymptomDisease label="Síntoma:" onChange={handleChange} />
                     </Control>
                 </Field>
-
                 <Button disabled={validateGenerate()} color="primary" onClick={(e) => handleGenerar(e)}>Generar</Button>
                 <Button color="secondary" onClick={(e) => handleCancel(e)}>Cancelar</Button>
                 {data.length > 0 && (
@@ -73,7 +69,6 @@ const ReportThree = ({ setIsPresent }) => {
                         <h3 className="color-title">{title.title}</h3>
                         <Tables dataList={data} title={titleTable} />
                     </div>
-
                 )}
                 {vacio && data.length === 0 && (
                     <div className="animate__animated animate__pulse">

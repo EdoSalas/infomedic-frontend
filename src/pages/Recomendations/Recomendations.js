@@ -6,11 +6,11 @@ import UserRecomendations from "./UserRecomendation";
 
 const Recomendations = () => {
   const { authState } = useAuth();
-  
-  return authState.user.type===1 ?(
-  <AdminRecomendations />
-):(
-  <UserRecomendations />
-);
+
+  return authState.user.type === 1 ? (
+    <AdminRecomendations />
+  ) : (
+    <UserRecomendations />
+  );
 }
 export default Recomendations;

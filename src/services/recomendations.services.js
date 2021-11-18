@@ -13,7 +13,7 @@ export const getAll = async () => {
 };
 export const deleteRecomendation = async (id) => {
     try {
-        const response = await axios.put(`${url}/medical/delete`, {id});
+        const response = await axios.put(`${url}/medical/delete`, { id });
         return await response.data;
     } catch (error) {
         console.log("Error: ", error);

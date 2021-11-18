@@ -120,8 +120,6 @@ function Sidebar({ open, setOpen }) {
   const permissions = ["Main"];
   const routes = getRoutes("Main");
   const routesAdmin = getAdminRoutes("Main");
- 
-
 
   const availableRoutes = routes.filter((route) =>
     Array.isArray(route.permissions)
@@ -137,9 +135,6 @@ function Sidebar({ open, setOpen }) {
   useEffect(() => {
     setMenuActive(false);
   }, [location.pathname]);
-
-
-
 
   const toggleActiveMenus = (name) =>
     setActiveMenus((prev) => ({ ...prev, [name]: !activeMenus[name] }));
@@ -221,9 +216,9 @@ function Sidebar({ open, setOpen }) {
             setOpen((prev) => !prev);
           }}
         >
-        <Icon size="large">
-        <FontAwesomeIcon size="2x" icon={open?"times-circle":"bars"}/>
-      </Icon>
+          <Icon size="large">
+            <FontAwesomeIcon size="2x" icon={open ? "times-circle" : "bars"} />
+          </Icon>
         </StyledBurger>
         <StyledMenu open={open} className="menu-container">
           <div className="sidebar-header">
@@ -245,7 +240,7 @@ function Sidebar({ open, setOpen }) {
 
           <hr />
           <div className="sidebar-menu">
-            {authState.user.type=== 0 && availableRoutes.map((r, i) => (
+            {authState.user.type === 0 && availableRoutes.map((r, i) => (
               <div
                 key={r.name}
                 className={`sidebar-menu-item ${activeRoute === routes[i] && menuActive ? "is-active" : ""
@@ -261,7 +256,7 @@ function Sidebar({ open, setOpen }) {
                 <span>{r.label}</span>
               </div>
             ))}
-            {authState.user.type=== 1 && availableRoutesAdmin.map((r, i) => (
+            {authState.user.type === 1 && availableRoutesAdmin.map((r, i) => (
               <div
                 key={r.name}
                 className={`sidebar-menu-item ${activeRoute === routes[i] && menuActive ? "is-active" : ""
@@ -282,7 +277,7 @@ function Sidebar({ open, setOpen }) {
               role="button"
               tabIndex="-1"
               onClick={() => handleLogout()}
-              onKeyDown={() =>null}
+              onKeyDown={() => null}
             >
 
               <span >Salir</span>

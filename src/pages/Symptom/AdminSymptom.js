@@ -37,9 +37,6 @@ const AdminSymptom = () => {
                     description: "",
                 })
                 getSymptoms();
-            }else{
-                console.log(symptomResponse)
-                
             }
         } else {
             toast.error("¡El nombre del síntoma es obligatorio!")
@@ -56,27 +53,27 @@ const AdminSymptom = () => {
         <div className="display-block" >
             <h1>Síntomas</h1>
             <Field className="fields-size">
-                    <Control>
-                        <Input type="text" 
+                <Control>
+                    <Input type="text"
                         maxLength="45"
                         name="name"
-                            placeholder="Síntoma"
-                            value={newSymptom.name}
-                            onChange={(e) => handleChange(e.target.name, e.target.value)} />
-                    </Control>
-                </Field>
-                <Field className="fields-size">
+                        placeholder="Síntoma"
+                        value={newSymptom.name}
+                        onChange={(e) => handleChange(e.target.name, e.target.value)} />
+                </Control>
+            </Field>
+            <Field className="fields-size">
                 <Control>
-                    <Input type="text" 
-                    maxLength="200"
-                    name="description"
+                    <Input type="text"
+                        maxLength="200"
+                        name="description"
                         placeholder="Descripción"
                         value={newSymptom.description}
                         onChange={(e) => handleChange(e.target.name, e.target.value)} />
                 </Control>
             </Field>
             <Button className="button-size " type="button" color="primary" onClick={(e) => handleSave(e)}>Registrar </Button>
-        
+
             {symptomList?.length > 0 && (
                 <ListSymptomCard symptomsList={symptomList} getSymptoms={getSymptoms} setSymptomsList={setSymptomList} />
             )}

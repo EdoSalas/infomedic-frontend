@@ -20,7 +20,7 @@ const SelectSymptomDisease = ({ onChange, label, disabled }) => {
         )
         setDiseases({ selectOptions: options })
     }
-   
+
     useEffect(() => {
 
         getOptions();
@@ -29,11 +29,11 @@ const SelectSymptomDisease = ({ onChange, label, disabled }) => {
     return (
         <Control>
             <Label>{""}</Label>
-            
-                <Select className="multi-select"
-                    options={symptoms?.selectOptions}
-                    onChange={onChange.bind(this)}
-                    placeholder="Buscar síntoma..." />
+
+            <Select className="multi-select"
+                options={symptoms?.selectOptions}
+                onChange={onChange.bind(this)}
+                placeholder="Buscar síntoma..." />
         </Control>
     );
 };

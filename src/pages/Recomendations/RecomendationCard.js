@@ -1,31 +1,31 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { toast } from "react-toastify";
-import { Card, Icon, Button } from "rbx";
+import { Card, Icon } from "rbx";
 import { useModal } from "../../context";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {deleteRecomendation} from "../../services/recomendations.services";
+import { deleteRecomendation } from "../../services/recomendations.services";
 import RecomendationDetail from "./RecomendationDetail";
 import "../../styles/index.scss";
 
 
-const RecomendationCard = ({ recomendationList, setRecomendationList,getRecomendations }) => {
-    const { setModalOpen } = useModal();
+const RecomendationCard = ({ recomendationList, setRecomendationList, getRecomendations }) => {
+  const { setModalOpen } = useModal();
 
-    const handleShowInfo =(e, recomendation) => {
-      e.preventDefault();
-      setModalOpen(true, <RecomendationDetail recomendation={recomendation} setRecomendationList={setRecomendationList} onClose={() => setModalOpen(false)} />);
-    }
-  const handleDeleteRecomendation= async (symptom, e) => {
+  const handleShowInfo = (e, recomendation) => {
+    e.preventDefault();
+    setModalOpen(true, <RecomendationDetail recomendation={recomendation} setRecomendationList={setRecomendationList} onClose={() => setModalOpen(false)} />);
+  }
+  const handleDeleteRecomendation = async (symptom, e) => {
     e.preventDefault();
     e.stopPropagation();
     const deletedSymptom = await deleteRecomendation(symptom.id)
-    if(deletedSymptom.success){
-        toast.success("Recomendación eliminada con éxito!")
-        getRecomendations();
+    if (deletedSymptom.success) {
+      toast.success("Recomendación eliminada con éxito!")
+      getRecomendations();
     }
   }
-  
+
   return (
     <div className="grid">
       {recomendationList?.map((recomendation) => (
@@ -41,12 +41,12 @@ const RecomendationCard = ({ recomendationList, setRecomendationList,getRecomend
             <p>{recomendation.description}</p>
           </div>
           <Icon className="hover-table-options icon-cancel">
-              <FontAwesomeIcon
-                icon="trash-alt"
-                size="1x"
-                onClick={(e) => handleDeleteRecomendation(recomendation, e)}
-              />
-            </Icon>
+            <FontAwesomeIcon
+              icon="trash-alt"
+              size="1x"
+              onClick={(e) => handleDeleteRecomendation(recomendation, e)}
+            />
+          </Icon>
         </Card>
       ))}
     </div>

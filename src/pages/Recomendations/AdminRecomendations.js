@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import { Field, Control, Input, Button, Textarea } from "rbx";
-import {getAll as getAllRecomendations, saveRecomendation } from "../../services/recomendations.services";
+import { getAll as getAllRecomendations, saveRecomendation } from "../../services/recomendations.services";
 import "../../styles/index.scss"
 import RecomendationCard from "./RecomendationCard";
 import { useAuth } from "../../context";
@@ -54,23 +54,23 @@ const AdminRecomendations = () => {
         <div className="display-block" >
             <h1>Recomendaciones Médicas</h1>
             <Field className="fields-size">
-                    <Control>
-                        <Input type="text" name="title"
-                            placeholder="Recomendación"
-                            value={newRecomendation.title}
-                            onChange={(e) => handleChange(e.target.name, e.target.value)} />
-                    </Control>
-                </Field>
-                <Field className="fields-size">
                 <Control>
-                    <Textarea className="text-size"  type="text" name="description"
+                    <Input type="text" name="title"
+                        placeholder="Recomendación"
+                        value={newRecomendation.title}
+                        onChange={(e) => handleChange(e.target.name, e.target.value)} />
+                </Control>
+            </Field>
+            <Field className="fields-size">
+                <Control>
+                    <Textarea className="text-size" type="text" name="description"
                         placeholder="Descripción"
                         value={newRecomendation.description}
                         onChange={(e) => handleChange(e.target.name, e.target.value)} />
                 </Control>
             </Field>
             <Button className="button-size " type="button" color="primary" onClick={(e) => handleSave(e)}>Registrar </Button>
-        
+
             {recomendationList?.length > 0 && (
                 <RecomendationCard recomendationList={recomendationList} getRecomendations={getRecomendations} setRecomendationList={setRecomendationList} />
             )}

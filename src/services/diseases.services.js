@@ -13,8 +13,8 @@ export const getAll = async () => {
 };
 export const getByUser = async (userID) => {
     try {
-        
-        const response = await axios.post(`${url}/reports/diseasesForUser`, userID );
+
+        const response = await axios.post(`${url}/reports/diseasesForUser`, userID);
         return await response.data;
     } catch (error) {
         console.log("Error: ", error);
@@ -24,7 +24,7 @@ export const getByUser = async (userID) => {
 export const saveDisease = async (disease) => {
     try {
         const response = await axios.post(`${url}/diseases/`, disease);
-       
+
         return await response.data;
     } catch (error) {
         console.log("Error: ", error);
@@ -33,7 +33,7 @@ export const saveDisease = async (disease) => {
 };
 export const deleteDisease = async (id) => {
     try {
-        const response = await axios.put(`https://esalas.me/api/diseases/delete`, {id});
+        const response = await axios.put(`https://esalas.me/api/diseases/delete`, { id });
         return await response.data;
     } catch (error) {
         console.log("Error: ", error);

@@ -55,7 +55,7 @@ const ListReports = ({ setIsPresent, isPresent }) => {
         },
         {
             id: 10,
-            name: "Cantidad de usuarios más afectados por edades",
+            name: "Edades más afectadas por síntomas",
             icon: "chart-area",
         },
 
@@ -65,9 +65,9 @@ const ListReports = ({ setIsPresent, isPresent }) => {
     const [selectReport, setSelectReport] = useState("");
 
     const handleShowInfo = (e, report) => {
-       // e.preventDefault();
+        // e.preventDefault();
         setSelectReport(report.id)
-        
+
         setIsPresent(true);
     }
 
@@ -96,7 +96,7 @@ const ListReports = ({ setIsPresent, isPresent }) => {
                     ))}
                 </div>
             )}
-            {selectReport !== "" && isPresent &&(
+            {selectReport !== "" && isPresent && (
                 <ReportFile type={selectReport} setIsPresent={setIsPresent} />
             )}
         </div>

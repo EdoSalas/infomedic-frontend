@@ -7,12 +7,12 @@ import "../../styles/index.scss";
 import { removeFactorForUser } from "../../services/factorByUser.services"
 
 const FactorsForUserCard = ({ riskList, getAllFactorsUser, getOptions }) => {
-   
+
 
     const handleDeleteFactorByUser = async (factor, e) => {
         e.preventDefault();
         e.stopPropagation();
-        console.log(factor.pk)
+
         const param = {
             id: factor.pk,
         }

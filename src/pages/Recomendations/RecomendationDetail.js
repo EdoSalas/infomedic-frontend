@@ -64,8 +64,8 @@ const RecomendationDetail = ({ recomendation, setRecomendationList, onClose }) =
                     <Field className="fields-size2">
                         <Control>
                             <Input disabled={!edit} type="text"
-                            maxLength="45"
-                            name="title"
+                                maxLength="45"
+                                name="title"
                                 placeholder="Nombre"
                                 value={recomendationChange?.title}
                                 onChange={(e) => handleChange(e.target.name, e.target.value)} />
@@ -85,9 +85,9 @@ const RecomendationDetail = ({ recomendation, setRecomendationList, onClose }) =
 
                 <Field className="fields-size2">
                     <Control>
-                        <Textarea disabled={!edit} type="text" 
-                        maxLength="200"
-                        name="description"
+                        <Textarea disabled={!edit} type="text"
+                            maxLength="200"
+                            name="description"
                             placeholder="Descripción"
                             value={recomendationChange?.description}
                             onChange={(e) => handleChange(e.target.name, e.target.value)} />

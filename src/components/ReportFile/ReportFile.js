@@ -12,7 +12,7 @@ import ReportEight from "../Reports/ReportEight";
 import ReportNine from "../Reports/ReportNine";
 import ReportTen from "../Reports/ReportTen";
 
-const ReportFile = ({type, setIsPresent}) => {
+const ReportFile = ({ type, setIsPresent }) => {
 
     console.log(type)
     return (

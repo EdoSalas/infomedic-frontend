@@ -14,19 +14,18 @@ const UserLoggin = ({ setLoginSection }) => {
         id: "",
         password: "",
     });
-    const handleRegister=(e)=>{
+    const handleRegister = (e) => {
         e.preventDefault();
         setLoginSection(false);
-      }
-
+    }
     const handleLoggin = async (e) => {
         e.preventDefault();
-         const user = await loginUser(stateUserLog);
-         if(user.success){
-           setAuthState((prev) => ({...prev, user: user.data, isLoggedIn: true}));
-         }else{
-             toast.error("Credenciales erróneas")
-         } 
+        const user = await loginUser(stateUserLog);
+        if (user.success) {
+            setAuthState((prev) => ({ ...prev, user: user.data, isLoggedIn: true }));
+        } else {
+            toast.error("Credenciales erróneas")
+        }
     }
     const handleChange = (name, value) => {
         setstateUserLog(prev => ({ ...prev, [name]: value }));
@@ -36,13 +35,13 @@ const UserLoggin = ({ setLoginSection }) => {
             <form className="block-container landing-page-container" onSubmit={handleLoggin}>
                 <Title className="title-center">Inicio de Sesión</Title>
                 <div className=" title-center">
-                <div className="logo title-center">
-                <Image.Container size="10px sq.">
-                  <Image src={logo}/>
-                </Image.Container>
-              </div>
+                    <div className="logo title-center">
+                        <Image.Container size="10px sq.">
+                            <Image src={logo} />
+                        </Image.Container>
+                    </div>
                 </div>
-               
+
                 <Field>
                     <Control>
                         <Input required type="text" name="id" placeholder="Número de cédula" value={stateUserLog.id}
@@ -57,7 +56,7 @@ const UserLoggin = ({ setLoginSection }) => {
                 </Field>
 
                 <Button type="submit" color="primary">Iniciar Sesión</Button>
-                <Button type="button" color="secondary" onClick={(e)=>handleRegister(e)}>Registrarse</Button>
+                <Button type="button" color="secondary" onClick={(e) => handleRegister(e)}>Registrarse</Button>
             </form>
         </div>
     );

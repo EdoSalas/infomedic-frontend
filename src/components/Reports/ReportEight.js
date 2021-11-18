@@ -1,13 +1,10 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { toast } from "react-toastify";
-import { Title, Field, Control, Input, Label, Button } from "rbx";
+import { Field, Control, Button } from "rbx";
 import "../../styles/index.scss";
-import SelectRegion from "../Demographics/RegionCard";
 import { riskForProvince } from "../../services/report.services"
-import CanvaReportOne from "../Canvas/CanvaReport0ne";
 import Tables from "../Tables/Tables";
-import SelectDisease from "../SelectDisease/SelectDisease";
 import SelectFactorDemo from "../SelectDisease/SelectFactorDemo";
 
 
@@ -25,25 +22,25 @@ const ReportEight = ({ setIsPresent }) => {
     }
     const handleGenerar = async (e) => {
         e.preventDefault();
-        if(rango?.riskFactor === 0){
+        if (rango?.riskFactor === 0) {
             toast.error("Debe seleccionar un factor de riesgo")
-        }else{
+        } else {
             const result = await riskForProvince(rango)
             if (result?.success) {
-    
-                 setTitle({
-                     title: ``,
-                 })
-                 setTitleTable("Factores de riesgo")
-                 setData(result?.data?.map((index) => ({
+
+                setTitle({
+                    title: ``,
+                })
+                setTitleTable("Factores de riesgo")
+                setData(result?.data?.map((index) => ({
                     id: index.id,
                     name: index.name,
-                 }))); 
-    
+                })));
+
             }
             setVacio(true);
         }
-        
+
 
     }
     const handleCancel = (e) => {
@@ -51,7 +48,6 @@ const ReportEight = ({ setIsPresent }) => {
         setIsPresent(false);
     }
     const validateGenerate = () => {
-        console.log(rango.riskFactor)
         if (rango.riskFactor !== 0) {
             return false;
         }

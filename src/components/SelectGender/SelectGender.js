@@ -1,11 +1,11 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { Select, Control, Label } from "rbx";
 import "../../styles/index.scss";
 import "../SelectProvince/SelectProvince.scss";
 
 const SelectGender = ({ value, name, onChange, label, disabled }) => {
-  const genders= [{name: "Femenino", value:"F"}, {name: "Masculino", value:"M"}];
+  const genders = [{ name: "Femenino", value: "F" }, { name: "Masculino", value: "M" }];
 
   return (
     <Control>
@@ -13,7 +13,7 @@ const SelectGender = ({ value, name, onChange, label, disabled }) => {
       <Select.Container fullwidth>
         <Select
           className="selector"
-          disabled = { disabled}
+          disabled={disabled}
           name={name}
           value={value}
           onChange={(e) => onChange(e.target.name, e.target.value)}
@@ -38,7 +38,7 @@ SelectGender.propTypes = {
 };
 
 SelectGender.defaultProps = {
-disabled : false,
+  disabled: false,
 }
 
 export default SelectGender;

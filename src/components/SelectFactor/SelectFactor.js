@@ -10,19 +10,19 @@ const SelectFactor = ({ getAllFactorsUser, riskList, list }) => {
     const { authState } = useAuth();
 
     const handleChange = async (e) => {
-    
-            //add new factor
-            const factorAndUser =
-            {
-                "user": parseInt(authState.user.id, 10),
-                "riskFactor": parseInt(e.value, 10),
-            }
-            const res = await addFactorForUser(factorAndUser);
-            const data = res;
-            if (data.success) {
-                toast.success("Factor registrado con éxito!")
-                getAllFactorsUser();
-            }
+
+        //add new factor
+        const factorAndUser =
+        {
+            "user": parseInt(authState.user.id, 10),
+            "riskFactor": parseInt(e.value, 10),
+        }
+        const res = await addFactorForUser(factorAndUser);
+        const data = res;
+        if (data.success) {
+            toast.success("Factor registrado con éxito!")
+            getAllFactorsUser();
+        }
 
     }
 

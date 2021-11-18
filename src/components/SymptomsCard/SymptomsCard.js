@@ -4,22 +4,22 @@ import { Card, Icon } from "rbx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { toast } from "react-toastify";
 import "../../styles/index.scss";
-import {removeSymptomsForDisease} from "../../services/diseases.services"
+import { removeSymptomsForDisease } from "../../services/diseases.services"
 
 const SymptomsCard = ({ symptomsList, setSymptomsList, getDiseasesDetails, disease }) => {
-  
-  const handleDeleteSymptom= async (symptom, e) =>{
+
+  const handleDeleteSymptom = async (symptom, e) => {
     e.preventDefault();
     e.stopPropagation();
     const param = {
       "symptom": parseInt(symptom.id, 10),
-     "disease": parseInt(disease.id, 10)
+      "disease": parseInt(disease.id, 10)
     }
-        const isDeleted = await removeSymptomsForDisease(param);
-        if(isDeleted.success){
-          toast.success("Síntoma eliminado con éxito!")
-          getDiseasesDetails();
-        }
+    const isDeleted = await removeSymptomsForDisease(param);
+    if (isDeleted.success) {
+      toast.success("Síntoma eliminado con éxito!")
+      getDiseasesDetails();
+    }
   }
   return (
     <div className="grid">
@@ -33,12 +33,12 @@ const SymptomsCard = ({ symptomsList, setSymptomsList, getDiseasesDetails, disea
             <p>{symptom.description}</p>
           </div>
           <Icon className="hover-table-options icon-cancel">
-              <FontAwesomeIcon
-                icon="trash-alt"
-                size="1x"
-                onClick={(e) => handleDeleteSymptom(symptom, e)}
-              />
-            </Icon>
+            <FontAwesomeIcon
+              icon="trash-alt"
+              size="1x"
+              onClick={(e) => handleDeleteSymptom(symptom, e)}
+            />
+          </Icon>
         </Card>
       ))}
     </div>
@@ -51,7 +51,7 @@ SymptomsCard.propTypes = {
   disease: PropTypes.object.isRequired,
   symptomsList: PropTypes.array,
   setSymptomsList: PropTypes.func.isRequired,
-  getDiseasesDetails:  PropTypes.func.isRequired,
+  getDiseasesDetails: PropTypes.func.isRequired,
 };
 
 export default SymptomsCard;

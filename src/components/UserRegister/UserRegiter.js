@@ -12,7 +12,7 @@ import SelectGender from "../SelectGender";
 const UserRegiter = ({ setLoginSection }) => {
   const { setAuthState } = useAuth();
   const [province, setProvince] = useState({ provinceId: "1" });
-  const [password, setPassword] = useState({ password: "", passwordConfirm: ""})
+  const [password, setPassword] = useState({ password: "", passwordConfirm: "" })
   const [stateUserReg, setstateUserReg] = useState({
     id: "",
     name: "",
@@ -24,12 +24,12 @@ const UserRegiter = ({ setLoginSection }) => {
     genero: "F",
   });
 
-const handlePasswordChange = (name, value) =>{
-  setPassword(prev => ({ ...prev, [name]: value }))
-  if(name === "password"){
-    setstateUserReg(prev => ({ ...prev, [name]: value }))
+  const handlePasswordChange = (name, value) => {
+    setPassword(prev => ({ ...prev, [name]: value }))
+    if (name === "password") {
+      setstateUserReg(prev => ({ ...prev, [name]: value }))
+    }
   }
-}
   const handleChangeProvince = (name, value) => {
     setProvince(prev => ({ ...prev, [name]: value }))
   }
@@ -37,11 +37,11 @@ const handlePasswordChange = (name, value) =>{
     if (stateUserReg.id !== "" && stateUserReg.name !== "" &&
       stateUserReg.lastname !== "" && stateUserReg.dateOfBirth !== "" &&
       stateUserReg.email !== "" && stateUserReg.canton !== "") {
-      if(stateUserReg.id.length < 9) {
+      if (stateUserReg.id.length < 9) {
         toast.error("¡El número de cédula debe tener un mínino de 9 dígitos!")
         return false;
       }
-      if(password.password !== password.passwordConfirm) {
+      if (password.password !== password.passwordConfirm) {
         toast.error("¡La contraseña y la confirmación no coinciden!")
         return false;
       }
@@ -57,15 +57,15 @@ const handlePasswordChange = (name, value) =>{
       if (user.success) {
         setAuthState((prev) => ({ ...prev, user: user.data, isLoggedIn: true }));
       }
-    } 
+    }
   }
 
   const handleChange = (name, value) => {
     if (name === "id") {
       setstateUserReg(prev => ({ ...prev, [name]: value, password: value }))
-    } else if(name ==="canton"){
-      setstateUserReg(prev => ({ ...prev, [name]: parseInt(value,10) }))
-    }else{
+    } else if (name === "canton") {
+      setstateUserReg(prev => ({ ...prev, [name]: parseInt(value, 10) }))
+    } else {
       setstateUserReg(prev => ({ ...prev, [name]: value }))
     }
   }
@@ -126,16 +126,16 @@ const handlePasswordChange = (name, value) =>{
         </Field>
         <Field>
           <Control>
-          <Label>Contraseña:</Label>
-          <Input type="password" maxLength="200" name="password" placeholder="Contraseña" value={password.password}
-          onChange={(e) => handlePasswordChange(e.target.name, e.target.value)} />
+            <Label>Contraseña:</Label>
+            <Input type="password" maxLength="200" name="password" placeholder="Contraseña" value={password.password}
+              onChange={(e) => handlePasswordChange(e.target.name, e.target.value)} />
           </Control>
         </Field>
         <Field>
           <Control>
-          <Label>Confirme la contraseña:</Label>
-          <Input type="password" maxLength="200" name="passwordConfirm" placeholder="Confirme la contraseña" value={password.passwordConfirm}
-          onChange={(e) => handlePasswordChange(e.target.name, e.target.value)} />
+            <Label>Confirme la contraseña:</Label>
+            <Input type="password" maxLength="200" name="passwordConfirm" placeholder="Confirme la contraseña" value={password.passwordConfirm}
+              onChange={(e) => handlePasswordChange(e.target.name, e.target.value)} />
           </Control>
         </Field>
         <Button type="submit" color="primary">Registrarse</Button>

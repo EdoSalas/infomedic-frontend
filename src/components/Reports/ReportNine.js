@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { toast } from "react-toastify";
-import { Title, Field, Control, Input, Label, Button } from "rbx";
+import { Field, Control, Input, Label, Button } from "rbx";
 import "../../styles/index.scss";
 import { sintomasPorGenero } from "../../services/report.services"
 import CanvaReportOne from "../Canvas/CanvaReport0ne";

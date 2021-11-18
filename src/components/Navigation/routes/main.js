@@ -20,35 +20,35 @@ const MAIN_ROUTES = [
     to: "/risk",
   },
   {
-      name: "stadistics",
-      label: "Estadísticas",
-      icon: "chart-area",
-      active: (location) => {
-        const [, p] = location.pathname.split("/");
-        return /stadistics/.test(p);
-      },
-      to: "/stadistics",
+    name: "stadistics",
+    label: "Estadísticas",
+    icon: "chart-area",
+    active: (location) => {
+      const [, p] = location.pathname.split("/");
+      return /stadistics/.test(p);
     },
-    {
-      name: "recomendations",
-      label: "Recomendaciones",
-      icon: "hands-wash",
-      active: (location) => {
-        const [, p] = location.pathname.split("/");
-        return /recomendations/.test(p);
-      },
-      to: "/recomendations",
+    to: "/stadistics",
+  },
+  {
+    name: "recomendations",
+    label: "Recomendaciones",
+    icon: "hands-wash",
+    active: (location) => {
+      const [, p] = location.pathname.split("/");
+      return /recomendations/.test(p);
     },
-    {
-      name: "configuration",
-      label: "Configuración",
-      icon: "user-cog",
-      active: (location) => {
-        const [, p] = location.pathname.split("/");
-        return /configuration/.test(p);
-      },
-      to: "/configuration",
+    to: "/recomendations",
+  },
+  {
+    name: "configuration",
+    label: "Configuración",
+    icon: "user-cog",
+    active: (location) => {
+      const [, p] = location.pathname.split("/");
+      return /configuration/.test(p);
     },
+    to: "/configuration",
+  },
 ];
 
 export default MAIN_ROUTES;

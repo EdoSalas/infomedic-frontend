@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { Select, Control, Label } from "rbx";
 import { getAll as getAllRegions } from "../../services/regions.services";
@@ -10,22 +10,22 @@ const SelectRegion = ({ value, name, onChange, label, disabled }) => {
 
   const getProvinces = async () => {
     const dataRegions = await getAllRegions()
-    if(dataRegions.success){
-        setRegions(dataRegions.data)
+    if (dataRegions.success) {
+      setRegions(dataRegions.data)
     }
   }
   useEffect(() => {
-    
-    getProvinces();   
+
+    getProvinces();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[])
+  }, [])
   return (
     <Control>
       <Label>{label}</Label>
       <Select.Container fullwidth>
         <Select
           className="selector"
-          disabled = { disabled}
+          disabled={disabled}
           name={name}
           value={value}
           onChange={(e) => onChange(e.target.name, e.target.value)}
@@ -50,7 +50,7 @@ SelectRegion.propTypes = {
 };
 
 SelectRegion.defaultProps = {
-disabled : false,
+  disabled: false,
 }
 
 export default SelectRegion;

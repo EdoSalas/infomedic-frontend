@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { toast } from "react-toastify";
-import { Title, Field, Control, Input, Label, Button } from "rbx";
+import { Field, Control, Input, Label, Button } from "rbx";
 import "../../styles/index.scss";
 import { symptomsForProvinces } from "../../services/report.services"
 import CanvaReportOne from "../Canvas/CanvaReport0ne";
-
 
 const ReportFive = ({ setIsPresent }) => {
     const [rango, setRango] = useState({
@@ -40,27 +39,27 @@ const ReportFive = ({ setIsPresent }) => {
                 if (result.data.length > 0) {
                     setData(result.data.map((index) => ({
                         provincia: index.name,
-                        sintomas: parseInt(index.amount,10),
+                        sintomas: parseInt(index.amount, 10),
                     })))
-                    
-                    setTick(result.data.map((index) =>{
+
+                    setTick(result.data.map((index) => {
                         return index.name
                     }));
-                    setTickF(result.data.map((index) =>{
+                    setTickF(result.data.map((index) => {
                         return "Prov.";
                     }));
-                    let d=0;
-                    result.data.forEach((index) =>{
-                       d+=parseInt(index.amount,10);
+                    let d = 0;
+                    result.data.forEach((index) => {
+                        d += parseInt(index.amount, 10);
                     })
                     setAmounts(d)
                     setLabelx("Provincias");
                     setLabely("Síntomas")
                     setOrientationx("provincia");
                     setOrientationy("sintomas");
-                    
+
                 }
-               
+
             }
             setVacio(true);
         }
@@ -97,17 +96,17 @@ const ReportFive = ({ setIsPresent }) => {
                 </Field>
                 <Button disabled={validateGenerate()} color="primary" onClick={(e) => handleGenerar(e)}>Generar</Button>
                 <Button color="secondary" onClick={(e) => handleCancel(e)}>Cancelar</Button>
-                {data.length > 0 && amounts>0 && (
+                {data.length > 0 && amounts > 0 && (
                     <CanvaReportOne data={data} tick={tick} tickF={tickF} labelx={labelx} labely={labely} orientationx={orientationx} orientationy={orientationy} />
                 )}
-                {vacio && amounts===0 && (
+                {vacio && amounts === 0 && (
                     <div className="animate__animated animate__pulse">
-                    <p>No existen síntomas registrados en ese rango de fechas</p>
+                        <p>No existen síntomas registrados en ese rango de fechas</p>
                     </div>
-                   
+
                 )}
 
-                
+
             </div>
         </div>
     )

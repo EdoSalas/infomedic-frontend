@@ -27,11 +27,11 @@ const SelectFactorDemo = ({ onChange, label, disabled }) => {
     return (
         <Control>
             <Label>{""}</Label>
-            
-                <Select className="multi-select"
-                    options={factors?.selectOptions}
-                    onChange={onChange.bind(this)}
-                    placeholder="Buscar factor de riesgo..." />
+
+            <Select className="multi-select"
+                options={factors?.selectOptions}
+                onChange={onChange.bind(this)}
+                placeholder="Buscar factor de riesgo..." />
         </Control>
     );
 };

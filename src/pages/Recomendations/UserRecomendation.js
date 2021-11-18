@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {getAll as getAllRecomendations } from "../../services/recomendations.services";
+import { getAll as getAllRecomendations } from "../../services/recomendations.services";
 import "../../styles/index.scss"
 import RecomendationUserCard from "./RecomendationUserCard";
 
@@ -25,7 +25,7 @@ const UserRecomendations = () => {
     return (
         <div className="display-block" >
             <h1>Recomendaciones Médicas</h1>
-            
+
             {recomendationList?.length > 0 && (
                 <RecomendationUserCard recomendationList={recomendationList} getRecomendations={getRecomendations} setRecomendationList={setRecomendationList} />
             )}

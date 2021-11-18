@@ -20,7 +20,7 @@ export const symptomsForRegions = async (params) => {
         return error;
     }
 };
-export const symptomsForProvinces= async (params) => {
+export const symptomsForProvinces = async (params) => {
     try {
         const response = await axios.post(`${url}/reports/provinceWithMoreSymptoms`, params);
         return await response.data;
@@ -30,7 +30,7 @@ export const symptomsForProvinces= async (params) => {
     }
 };
 
-export const symptomsForCantones= async (params) => {
+export const symptomsForCantones = async (params) => {
     try {
         const response = await axios.post(`${url}/reports/cantonWithMoreSymptoms`, params);
         return await response.data;

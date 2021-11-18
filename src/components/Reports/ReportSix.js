@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { toast } from "react-toastify";
-import { Title, Field, Control, Input, Label, Button } from "rbx";
+import { Field, Control, Input, Label, Button } from "rbx";
 import "../../styles/index.scss";
 import { symptomsForCantones } from "../../services/report.services"
 import CanvaReportOne from "../Canvas/CanvaReport0ne";
@@ -38,7 +38,7 @@ const ReportSix = ({ setIsPresent }) => {
             if (result.success) {
                 //  data, tick, labelx, labely, orientationx, orientationy
                 if (result.data.length > 0) {
-                    const array=[];
+                    const array = [];
                     array.push(result.data[0]);
                     array.push(result.data[1]);
                     array.push(result.data[2]);
@@ -46,27 +46,27 @@ const ReportSix = ({ setIsPresent }) => {
                     array.push(result.data[4]);
                     setData(array.map((index) => ({
                         canton: index.name,
-                        sintomas: parseInt(index.amount,10),
+                        sintomas: parseInt(index.amount, 10),
                     })))
-                    
-                    setTick(array.map((index) =>{
+
+                    setTick(array.map((index) => {
                         return index.name
                     }));
-                    setTickF(array.map((index) =>{
+                    setTickF(array.map((index) => {
                         return "Canton";
                     }));
-                    let d=0;
-                    result.data.forEach((index) =>{
-                       d+=parseInt(index.amount,10);
+                    let d = 0;
+                    result.data.forEach((index) => {
+                        d += parseInt(index.amount, 10);
                     })
                     setAmounts(d)
                     setLabelx("Cantones");
                     setLabely("Síntomas")
                     setOrientationx("canton");
                     setOrientationy("sintomas");
-                    
+
                 }
-               
+
             }
             setVacio(true);
         }
@@ -103,17 +103,15 @@ const ReportSix = ({ setIsPresent }) => {
                 </Field>
                 <Button disabled={validateGenerate()} color="primary" onClick={(e) => handleGenerar(e)}>Generar</Button>
                 <Button color="secondary" onClick={(e) => handleCancel(e)}>Cancelar</Button>
-                {data.length > 0 && amounts>0 && (
+                {data.length > 0 && amounts > 0 && (
                     <CanvaReportOne data={data} tick={tick} tickF={tickF} labelx={labelx} labely={labely} orientationx={orientationx} orientationy={orientationy} />
                 )}
-                {vacio && amounts===0 && (
+                {vacio && amounts === 0 && (
                     <div className="animate__animated animate__pulse">
-                    <p>No existen síntomas registrados en ese rango de fechas</p>
+                        <p>No existen síntomas registrados en ese rango de fechas</p>
                     </div>
-                   
-                )}
 
-                
+                )}
             </div>
         </div>
     )

@@ -35,7 +35,7 @@ export const saveSymptom = async (symptom) => {
         const response = await axios.post(`${url}/symptoms/`, symptom);
         console.log(response, "response")
         return await response.data;
-        
+
     } catch (error) {
         console.log("Error: ", error);
         return error;
@@ -43,7 +43,7 @@ export const saveSymptom = async (symptom) => {
 };
 export const deleteSymptom = async (id) => {
     try {
-        const response = await axios.put(`${url}/symptoms/delete`, {id});
+        const response = await axios.put(`${url}/symptoms/delete`, { id });
         return await response.data;
     } catch (error) {
         console.log("Error: ", error);

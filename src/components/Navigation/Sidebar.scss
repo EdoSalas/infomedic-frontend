@@ -2,7 +2,7 @@
 
 $menu-width: 295px;
 
-.menu-container{
+.menu-container {
   background-image: url(../../styles/logo1.jpg);
 }
 
@@ -10,7 +10,7 @@ $menu-width: 295px;
   position: fixed;
   left: 0;
   z-index: 10;
-  background:  $primary;
+  background: $primary;
   height: 3.25rem;
   width: 100%;
   box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.09);

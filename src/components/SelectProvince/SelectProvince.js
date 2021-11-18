@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { Select, Control, Label } from "rbx";
 import { getAll as getAllProvinces } from "../../services/provinces.services";
@@ -10,22 +10,22 @@ const SelectProvince = ({ value, name, onChange, label, disabled }) => {
 
   const getProvinces = async () => {
     const dataProvince = await getAllProvinces()
-    if(dataProvince.success){
+    if (dataProvince.success) {
       setProvinces(dataProvince.data)
     }
   }
   useEffect(() => {
-    
-    getProvinces();   
+
+    getProvinces();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[])
+  }, [])
   return (
     <Control>
       <Label>{label}</Label>
       <Select.Container fullwidth>
         <Select
           className="selector"
-          disabled = { disabled}
+          disabled={disabled}
           name={name}
           value={value}
           onChange={(e) => onChange(e.target.name, e.target.value)}
@@ -50,7 +50,7 @@ SelectProvince.propTypes = {
 };
 
 SelectProvince.defaultProps = {
-disabled : false,
+  disabled: false,
 }
 
 export default SelectProvince;

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import { Field, Control, Input, Button } from "rbx";
-import {getAll as getAllFactors, saveFactor} from "../../services/riskfactors.services";
+import { getAll as getAllFactors, saveFactor } from "../../services/riskfactors.services";
 import FactorsCard from "../../components/FactorsCard";
 import "../../styles/index.scss"
 
@@ -51,8 +51,8 @@ const AdminRisk = () => {
       <Field className="fields-size">
         <Control>
           <Input type="text"
-          maxLength="45"
-          name="name"
+            maxLength="45"
+            name="name"
             placeholder="Factor de riesgo"
             value={newFactor.name}
             onChange={(e) => handleChange(e.target.name, e.target.value)} />

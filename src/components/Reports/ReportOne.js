@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { toast } from "react-toastify";
-import { Title, Field, Control, Input, Label, Button } from "rbx";
+import { Field, Control, Input, Label, Button } from "rbx";
 import "../../styles/index.scss";
 import SelectRegion from "../Demographics/RegionCard";
 import { diseasesForRegions } from "../../services/report.services"
-import CanvaReportOne from "../Canvas/CanvaReport0ne";
 import Tables from "../Tables/Tables";
 
-
-const ReportOne = ({setIsPresent}) => {
+const ReportOne = ({ setIsPresent }) => {
     const [rango, setRango] = useState({
         inicio: "",
         fin: "",
@@ -35,15 +33,15 @@ const ReportOne = ({setIsPresent}) => {
             }
             const result = await diseasesForRegions(param)
             if (result?.success) {
-             
-             setTitle({
-                 title: `Región: ${result?.data?.region?.name}`,
-             })
-             setTitleTable("Posibles Enfermedades")
-             setData(result?.data?.diseases.map((index) => ({
-                id: index.id,
-                name: index.name,
-             })));
+
+                setTitle({
+                    title: `Región: ${result?.data?.region?.name}`,
+                })
+                setTitleTable("Posibles Enfermedades")
+                setData(result?.data?.diseases.map((index) => ({
+                    id: index.id,
+                    name: index.name,
+                })));
 
             }
             setVacio(true);
@@ -84,22 +82,22 @@ const ReportOne = ({setIsPresent}) => {
                         <SelectRegion label="Región:" name="region" value={rango.region} onChange={handleChange} />
                     </Control>
                 </Field>
-                
+
                 <Button disabled={validateGenerate()} color="primary" onClick={(e) => handleGenerar(e)}>Generar</Button>
                 <Button color="secondary" onClick={(e) => handleCancel(e)}>Cancelar</Button>
                 {data.length > 0 && (
                     <div className="animate__animated animate__bounceInLeft">
-                    <h3 className="color-title">{""}</h3>
-                    <h3 className="color-title">{title.title}</h3>
-                    <Tables dataList={data} title={titleTable}/>
+                        <h3 className="color-title">{""}</h3>
+                        <h3 className="color-title">{title.title}</h3>
+                        <Tables dataList={data} title={titleTable} />
                     </div>
-                    
+
                 )}
                 {vacio && data.length === 0 && (
                     <div className="animate__animated animate__pulse">
-                    <p>No existen datos registrados de posibles enfermedades en ese rango de fechas y región</p>
+                        <p>No existen datos registrados de posibles enfermedades en ese rango de fechas y región</p>
                     </div>
-                   
+
                 )}
             </div>
         </div>

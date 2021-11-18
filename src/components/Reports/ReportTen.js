@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { toast } from "react-toastify";
-import { Title, Field, Control, Input, Label, Button } from "rbx";
+import { Field, Control, Input, Label, Button } from "rbx";
 import "../../styles/index.scss";
 import { edadesAfectadas } from "../../services/report.services"
 import CanvaReportOne from "../Canvas/CanvaReport0ne";
@@ -40,27 +40,27 @@ const ReportTen = ({ setIsPresent }) => {
                 if (result.data.length > 0) {
                     setData(result.data.map((index) => ({
                         edad: index?.Age,
-                        sintomas: parseInt(index?.Affected,10),
+                        sintomas: parseInt(index?.Affected, 10),
                     })))
-                    
-                    setTick(result.data.map((index) =>{
+
+                    setTick(result.data.map((index) => {
                         return index.Age
                     }));
-                    setTickF(result.data.map((index) =>{
+                    setTickF(result.data.map((index) => {
                         return index.Age
                     }));
-                    let d=0;
-                    result.data.forEach((index) =>{
-                       d+=parseInt(index.Affected,10);
+                    let d = 0;
+                    result.data.forEach((index) => {
+                        d += parseInt(index.Affected, 10);
                     })
                     setAmounts(d)
                     setLabelx("Edades");
                     setLabely("Cantidad de Síntomas")
                     setOrientationx("edad");
                     setOrientationy("sintomas");
-                    
+
                 }
-               
+
             }
             setVacio(true);
         }
@@ -97,17 +97,17 @@ const ReportTen = ({ setIsPresent }) => {
                 </Field>
                 <Button disabled={validateGenerate()} color="primary" onClick={(e) => handleGenerar(e)}>Generar</Button>
                 <Button color="secondary" onClick={(e) => handleCancel(e)}>Cancelar</Button>
-                {data.length > 0 && amounts>0 && (
-                    <CanvaReportOne axis={false} data={data} tick={tick} tickF={tickF} labelx={labelx} labely={labely} orientationx={orientationx} orientationy={orientationy} horizontal={false}/>
+                {data.length > 0 && amounts > 0 && (
+                    <CanvaReportOne axis={false} data={data} tick={tick} tickF={tickF} labelx={labelx} labely={labely} orientationx={orientationx} orientationy={orientationy} horizontal={false} />
                 )}
-                {vacio && amounts===0 && (
+                {vacio && amounts === 0 && (
                     <div className="animate__animated animate__pulse">
-                    <p>No existen datos registrados en ese rango de fechas</p>
+                        <p>No existen datos registrados en ese rango de fechas</p>
                     </div>
-                   
+
                 )}
 
-                
+
             </div>
         </div>
     )

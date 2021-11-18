@@ -29,11 +29,11 @@ const SelectDisease = ({ onChange, label, disabled }) => {
     return (
         <Control>
             <Label>{""}</Label>
-            
-                <Select className="multi-select"
-                    options={diseases?.selectOptions}
-                    onChange={onChange.bind(this)}
-                    placeholder="Buscar enfermedad..." />
+
+            <Select className="multi-select"
+                options={diseases?.selectOptions}
+                onChange={onChange.bind(this)}
+                placeholder="Buscar enfermedad..." />
         </Control>
     );
 };

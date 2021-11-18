@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { toast } from "react-toastify";
 import "../../styles/index.scss";
 import { removeSymptomsForUser } from "../../services/symptomByUser.services"
-import { useAuth, useModal } from "../../context";
 
 const SymptomsForUserCard = ({ symptomsList, setSymptomsList, getAllSymptomsForUser, getOptions }) => {
 

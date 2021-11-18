@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { toast } from "react-toastify";
-import { Title, Field, Control, Input, Label, Button } from "rbx";
+import { Field, Control, Button } from "rbx";
 import "../../styles/index.scss";
-import SelectRegion from "../Demographics/RegionCard";
 import { symptomsForDisease } from "../../services/report.services"
-import CanvaReportOne from "../Canvas/CanvaReport0ne";
 import Tables from "../Tables/Tables";
 import SelectDisease from "../SelectDisease/SelectDisease";
 
@@ -24,25 +22,25 @@ const ReportTwo = ({ setIsPresent }) => {
     }
     const handleGenerar = async (e) => {
         e.preventDefault();
-        if(rango?.disease === 0){
+        if (rango?.disease === 0) {
             toast.error("Debe seleccionar una enfermedad")
-        }else{
+        } else {
             const result = await symptomsForDisease(rango)
             if (result?.success) {
-    
-                 setTitle({
-                     title: ``,
-                 })
-                 setTitleTable("Síntomas de la enfermedad")
-                 setData(result?.data?.map((index) => ({
+
+                setTitle({
+                    title: ``,
+                })
+                setTitleTable("Síntomas de la enfermedad")
+                setData(result?.data?.map((index) => ({
                     id: index.id,
                     name: index.name,
-                 }))); 
-    
+                })));
+
             }
             setVacio(true);
         }
-        
+
 
     }
     const handleCancel = (e) => {
@@ -50,7 +48,7 @@ const ReportTwo = ({ setIsPresent }) => {
         setIsPresent(false);
     }
     const validateGenerate = () => {
-        console.log(rango.disease)
+
         if (rango.disease !== 0) {
             return false;
         }

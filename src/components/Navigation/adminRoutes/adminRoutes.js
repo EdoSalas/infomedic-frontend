@@ -9,58 +9,57 @@ const MAIN_ROUTES = [
     },
     to: "/diseases",
   },
-    {
-      name: "symptom",
-      label: "Síntomas ",
-      icon: "head-side-virus",
-      active: (location) => {
-        const [, p] = location.pathname.split("/");
-        return /symptom/.test(p);
-      },
-      to: "/symptom",
+  {
+    name: "symptom",
+    label: "Síntomas ",
+    icon: "head-side-virus",
+    active: (location) => {
+      const [, p] = location.pathname.split("/");
+      return /symptom/.test(p);
     },
-    {
-      name: "risk",
-      label: "Factores de riesgo ",
-      icon: "exclamation-circle",
-      active: (location) => {
-        const [, p] = location.pathname.split("/");
-        return /risk/.test(p);
-      },
-      to: "/risk",
+    to: "/symptom",
+  },
+  {
+    name: "risk",
+    label: "Factores de riesgo ",
+    icon: "exclamation-circle",
+    active: (location) => {
+      const [, p] = location.pathname.split("/");
+      return /risk/.test(p);
     },
-    {
-      name: "recomendations",
-      label: "Recomendaciones",
-      icon: "hands-wash",
-      active: (location) => {
-        const [, p] = location.pathname.split("/");
-        return /recomendations/.test(p);
-      },
-      to: "/recomendations",
+    to: "/risk",
+  },
+  {
+    name: "recomendations",
+    label: "Recomendaciones",
+    icon: "hands-wash",
+    active: (location) => {
+      const [, p] = location.pathname.split("/");
+      return /recomendations/.test(p);
     },
-    {
-      name: "stadistics",
-      label: "Estadísticas",
-      icon: "chart-area",
-      active: (location) => {
-        const [, p] = location.pathname.split("/");
-        return /stadistics/.test(p);
-      },
-      to: "/stadistics",
+    to: "/recomendations",
+  },
+  {
+    name: "stadistics",
+    label: "Estadísticas",
+    icon: "chart-area",
+    active: (location) => {
+      const [, p] = location.pathname.split("/");
+      return /stadistics/.test(p);
     },
-    {
-      name: "configuration",
-      label: "Configuración",
-      icon: "user-cog",
-      active: (location) => {
-        const [, p] = location.pathname.split("/");
-        return /configuration/.test(p);
-      },
-      to: "/configuration",
+    to: "/stadistics",
+  },
+  {
+    name: "configuration",
+    label: "Configuración",
+    icon: "user-cog",
+    active: (location) => {
+      const [, p] = location.pathname.split("/");
+      return /configuration/.test(p);
     },
-    
-  ];
-  
-  export default MAIN_ROUTES;
-  
+    to: "/configuration",
+  },
+
+];
+
+export default MAIN_ROUTES;

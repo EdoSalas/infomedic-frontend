@@ -6,7 +6,7 @@ import "../../styles/index.scss";
 
 
 const RecomendationUserCard = ({ recomendationList }) => {
-  
+
   return (
     <div className="grid">
       {recomendationList?.map((recomendation) => (
