@@ -12,7 +12,6 @@ const AdminRecomendations = () => {
         title: "",
         description: "",
         user: authState.user.id,
-
     })
     const [recomendationList, setRecomendationList] = useState([]);
 
@@ -20,7 +19,7 @@ const AdminRecomendations = () => {
         const recomendations = await getAllRecomendations()
         if (recomendations.success) {
             setRecomendationList(recomendations.data)
-        }else{
+        } else {
             setRecomendationList([])
         }
     }
@@ -30,13 +29,14 @@ const AdminRecomendations = () => {
     }
     const handleSave = async (e) => {
         e.preventDefault();
-        if (newRecomendation?.name !== "") {
+        if (newRecomendation?.title !== "") {
             const user = await saveRecomendation(newRecomendation)
             if (user.success) {
                 toast.success("¡Nuevo síntoma registrado!")
                 setNewRecomendation({
                     title: "",
                     description: "",
+                    user: authState.user.id,
                 })
                 getRecomendations();
             }
