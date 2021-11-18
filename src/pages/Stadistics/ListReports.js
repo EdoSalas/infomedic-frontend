@@ -1,13 +1,12 @@
 
-import React from "react";
+import React, { useState } from "react";
 import { Card, Icon } from "rbx";
+import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useModal } from "../../context";
-import Canvas from "../../components/Canvas/Canvas";
 import "../../styles/index.scss";
 import ReportFile from "../../components/ReportFile/ReportFile";
 
-const ListReports = () => {
+const ListReports = ({ setIsPresent, isPresent }) => {
     const listReports = [
         {
             id: 1,
@@ -56,38 +55,53 @@ const ListReports = () => {
         },
 
     ];
-    {/*  <div className="stadisticts-container">
-      <Canvas />
-      </div> */}
-    const { setModalOpen } = useModal();
+
+
+    const [selectReport, setSelectReport] = useState("");
 
     const handleShowInfo = (e, report) => {
-        e.preventDefault();
-       setModalOpen(true, <ReportFile type={report.id} onClose={() => setModalOpen(false)} />);
+       // e.preventDefault();
+        setSelectReport(report.id)
+        
+        setIsPresent(true);
     }
 
+
     return (
-        <div className="grid">
-            {listReports?.map(type => (
-                <Card
-                    key={type.id}
-                    className="card-content display-flex hover-table-options"
-                    onClick={(e) => {
-                        handleShowInfo(e, type);
-                    }}
-                >
-                    <div key={type.id} >
-                        <Icon size="large">
-                            <FontAwesomeIcon size="4x" icon={type.icon} />
-                        </Icon>
-                        <h2>{type.name}</h2>
+        <div>
+            {!isPresent && (
+                <div className="grid">
+                    {listReports?.map(type => (
+                        <Card
+                            key={type.id}
+                            className="card-content display-flex hover-table-options"
+                            onClick={(e) => {
+                                handleShowInfo(e, type);
+                            }}
+                        >
+                            <div key={type.id} >
+                                <Icon size="large">
+                                    <FontAwesomeIcon size="3x" icon={type.icon} />
+                                </Icon>
+                                <h2>{type.name}</h2>
 
-                    </div>
-                </Card>
+                            </div>
+                        </Card>
 
-            ))}
+                    ))}
+                </div>
+            )}
+            {selectReport !== "" && isPresent &&(
+                <ReportFile type={selectReport} setIsPresent={setIsPresent} />
+            )}
         </div>
+
     )
+
+};
+ListReports.propTypes = {
+    setIsPresent: PropTypes.func.isRequired,
+    isPresent: PropTypes.bool.isRequired
 };
 
 export default ListReports;

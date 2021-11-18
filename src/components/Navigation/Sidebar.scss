@@ -10,7 +10,7 @@ $menu-width: 295px;
   position: fixed;
   left: 0;
   z-index: 10;
-  background: linear-gradient(to right, $secondary, $primary);
+  background:  $primary;
   height: 3.25rem;
   width: 100%;
   box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.09);

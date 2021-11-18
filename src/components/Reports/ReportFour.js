@@ -3,21 +3,23 @@ import PropTypes from "prop-types";
 import { toast } from "react-toastify";
 import { Title, Field, Control, Input, Label, Button } from "rbx";
 import "../../styles/index.scss";
-import SelectRegion from "../Demographics/RegionCard";
-import { diseasesForRegions } from "../../services/report.services"
+import { symptomsForRegions } from "../../services/report.services"
 import CanvaReportOne from "../Canvas/CanvaReport0ne";
-import Tables from "../Tables/Tables";
 
 
-const ReportOne = ({setIsPresent}) => {
+const ReportFour = ({ setIsPresent }) => {
     const [rango, setRango] = useState({
         inicio: "",
         fin: "",
-        region: 1,
     });
-    const [data, setData] = useState([])
-    const [title, setTitle] = useState({})
-    const [titleTable, setTitleTable] = useState({})
+    const [data, setData] = useState([]);
+    const [amounts, setAmounts] = useState(0)
+    const [tick, setTick] = useState([]);
+    const [tickF, setTickF] = useState([]);
+    const [labelx, setLabelx] = useState([]);
+    const [labely, setLabely] = useState([]);
+    const [orientationx, setOrientationx] = useState([]);
+    const [orientationy, setOrientationy] = useState([]);
     const [vacio, setVacio] = useState(false);
 
     const handleChange = (name, value) => {
@@ -29,22 +31,36 @@ const ReportOne = ({setIsPresent}) => {
             toast.error("La fecha de inicio debe ser anterior a la de fin")
         } else {
             const param = {
-                "region": rango.region,
                 "initDate": rango.inicio,
                 "finalDate": rango.fin,
             }
-            const result = await diseasesForRegions(param)
-            if (result?.success) {
-             
-             setTitle({
-                 title: `Región: ${result?.data?.region?.name}`,
-             })
-             setTitleTable("Posibles Enfermedades")
-             setData(result?.data?.diseases.map((index) => ({
-                id: index.id,
-                name: index.name,
-             })));
-
+            const result = await symptomsForRegions(param)
+            if (result.success) {
+                //  data, tick, labelx, labely, orientationx, orientationy
+                if (result.data.length > 0) {
+                    setData(result.data.map((index) => ({
+                        region: index.name,
+                        sintomas: parseInt(index.amount,10),
+                    })))
+                    
+                    setTick(result.data.map((index) =>{
+                        return index.name
+                    }));
+                    setTickF(result.data.map((index) =>{
+                        return "Reg.";
+                    }));
+                    let d=0;
+                    result.data.forEach((index) =>{
+                       d+=parseInt(index.amount,10);
+                    })
+                    setAmounts(d)
+                    setLabelx("Regiones");
+                    setLabely("Síntomas")
+                    setOrientationx("region");
+                    setOrientationy("sintomas");
+                    
+                }
+               
             }
             setVacio(true);
         }
@@ -79,36 +95,27 @@ const ReportOne = ({setIsPresent}) => {
                             onChange={(e) => handleChange(e.target.name, e.target.value)} />
                     </Control>
                 </Field>
-                <Field>
-                    <Control>
-                        <SelectRegion label="Región:" name="region" value={rango.region} onChange={handleChange} />
-                    </Control>
-                </Field>
-                
                 <Button disabled={validateGenerate()} color="primary" onClick={(e) => handleGenerar(e)}>Generar</Button>
                 <Button color="secondary" onClick={(e) => handleCancel(e)}>Cancelar</Button>
-                {data.length > 0 && (
-                    <div className="animate__animated animate__bounceInLeft">
-                    <h3 className="color-title">{""}</h3>
-                    <h3 className="color-title">{title.title}</h3>
-                    <Tables dataList={data} title={titleTable}/>
-                    </div>
-                    
+                {data.length > 0 && amounts>0 && (
+                    <CanvaReportOne data={data} tick={tick} tickF={tickF} labelx={labelx} labely={labely} orientationx={orientationx} orientationy={orientationy} />
                 )}
-                {vacio && data.length === 0 && (
+                {vacio && amounts===0 && (
                     <div className="animate__animated animate__pulse">
-                    <p>No existen datos registrados de posibles enfermedades en ese rango de fechas y región</p>
+                    <p>No existen síntomas registrados en ese rango de fechas</p>
                     </div>
                    
                 )}
+
+                
             </div>
         </div>
     )
 };
 
-ReportOne.propTypes = {
+ReportFour.propTypes = {
     setIsPresent: PropTypes.func.isRequired,
 };
 
-export default ReportOne;
+export default ReportFour;
 

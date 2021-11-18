@@ -372,6 +372,28 @@ button::after {
   color: $primary;
   cursor: pointer;
 }
+.color-table{
+  background: #3a8d82;
+  border: 2px solid grey;
+ // border-radius: 10px;
+  h3{
+    font-weight: bold;
+    color: white;
+  }
+}
+.table-report{
+// background: #3a8d82;
+  margin-top: 1rem;
+  border: 2px solid #3a8d82;
+  border-radius: 10px;
+}
+.color-title{
+  color: white;
+  background: #3a8d82;
+  margin-top: 1rem;
+  border: 2px solid grey;
+  border-radius: 10px;
+}
 .button.is-primary {
   background-color:$primary;
   border-color: transparent;

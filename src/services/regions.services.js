@@ -4,7 +4,7 @@ const url = "https://esalas.me/api";
 
 export const getAll = async () => {
     try {
-        const response = await axios.get(`${url}/regions`);
+        const response = await axios.get(`${url}/regions/`);
         return await response.data;
     } catch (error) {
         console.log("Error: ", error);

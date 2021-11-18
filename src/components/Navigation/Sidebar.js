@@ -221,9 +221,9 @@ function Sidebar({ open, setOpen }) {
             setOpen((prev) => !prev);
           }}
         >
-          <div />
-          <div />
-          <div />
+        <Icon size="large">
+        <FontAwesomeIcon size="2x" icon={open?"times-circle":"bars"}/>
+      </Icon>
         </StyledBurger>
         <StyledMenu open={open} className="menu-container">
           <div className="sidebar-header">
